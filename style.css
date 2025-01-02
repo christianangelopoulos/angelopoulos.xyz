@@ -1,0 +1,313 @@
+/* Theme Variables */
+:root {
+  --bg-primary: #f5f3f2;
+  --bg-secondary: #eae7e6;
+  --text-primary: #0a0a0a;
+  --text-secondary: #2b2b2b;
+  --accent: #5d4a45;
+  --accent-hover: #3d2f2b;
+  --border-color: #e5e0de;
+  --selection-bg: #e5e0de;
+  --bg-gradient: linear-gradient(135deg, #f5f3f2 0%, #eae7e6 100%);
+  --link-color: #800020;
+  --link-hover: #666666;
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  :root:not(.force-light) {
+    --bg-primary: #2d2e34;
+    --bg-secondary: #33343a;
+    --text-primary: #e2e1e4;
+    --text-secondary: #bcbbc0;
+    --accent: #a8a7ac;
+    --accent-hover: #c4c3c8;
+    --border-color: #3f4045;
+    --selection-bg: #3f4045;
+    --bg-gradient: linear-gradient(140deg, 
+      #2d2e34 0%, 
+      #31323a 30%, 
+      #33343a 70%, 
+      #35363c 100%);
+    --link-color: #e6a9b3;
+    --link-hover: #f0c4cb;
+  }
+}
+
+:root.force-dark {
+  --bg-primary: #2d2e34;
+  --bg-secondary: #33343a;
+  --text-primary: #e2e1e4;
+  --text-secondary: #bcbbc0;
+  --accent: #a8a7ac;
+  --accent-hover: #c4c3c8;
+  --border-color: #3f4045;
+  --selection-bg: #3f4045;
+  --bg-gradient: linear-gradient(140deg, 
+    #2d2e34 0%, 
+    #31323a 30%, 
+    #33343a 70%, 
+    #35363c 100%);
+  --link-color: #e6a9b3;
+  --link-hover: #f0c4cb;
+}
+
+/* Base Styles */
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: var(--selection-bg);
+}
+
+body {
+  max-width: 650px;
+  margin: 8px auto;
+  padding: 0 20px;
+  font: 16px/1.6 system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  color: var(--text-primary);
+  background: var(--bg-gradient) fixed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  transition: background-color 0.2s ease;
+}
+
+/* Typography */
+h1 {
+  margin-bottom: 0.5rem;
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  color: var(--text-primary);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+}
+
+h2 {
+  margin: 1.5rem 0 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  color: var(--text-primary);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+p {
+  font-weight: 450;
+  letter-spacing: 0.01em;
+  color: var(--text-primary);
+}
+
+/* Links */
+a:link,
+a:visited {
+  padding-bottom: 1px;
+  font-weight: 600;
+  color: var(--link-color);
+  text-decoration: none;
+  text-shadow: 0 0 1px rgba(128, 0, 32, 0.1);
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-bottom-color 0.2s ease;
+}
+
+a:hover {
+  color: var(--link-hover) !important;
+  border-bottom: 1px solid var(--link-hover) !important;
+}
+
+/* Layout Components */
+#headerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0.75rem 0 1rem;
+  padding: 0.25rem 0;
+}
+
+#titleContainer {
+  text-align: center;
+  flex-grow: 1;
+}
+
+/* Images */
+.center {
+  width: 5%;
+  margin-left: auto;
+  margin-right: 5px;
+  vertical-align: middle;
+  border-radius: 50%;
+  object-position: 50% 50%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+}
+
+.center:hover {
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+#profilePic {
+  width: 110px;
+  margin: 0 12px;
+  border-radius: 14px;
+  transform-origin: center;
+  backface-visibility: hidden;
+  filter: brightness(1.02) contrast(1.02);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+#profilePic:hover {
+  transform: translateY(-5px) scale(1.05) rotate(2deg);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+  filter: brightness(1.05) contrast(1.05);
+}
+
+/* List Styles */
+div.experience li,
+div.consulting li {
+  margin: 6px 0;
+  padding-left: 12px;
+  font-weight: 450;
+  letter-spacing: 0.01em;
+  border-left: 2px solid transparent;
+  transition: border-left 0.2s ease, transform 0.2s ease, color 0.2s ease;
+  will-change: transform;
+}
+
+div.experience li:hover,
+div.consulting li:hover {
+  color: var(--accent);
+  border-left: 2px solid var(--accent);
+  transform: translateX(2px);
+}
+
+/* Date Display */
+.date {
+  float: right;
+  display: block;
+  margin-left: 10px;
+  font-size: 0.9em;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--text-secondary);
+  text-align: right;
+}
+
+/* Horizontal Rule */
+hr {
+  margin: 0.75rem 0 1.25rem;
+  padding: 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Theme Toggle */
+#themeToggle {
+  width: 40px;
+  height: 40px;
+  margin: 0 12px;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+  background: none;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#themeToggle:hover {
+  background: var(--bg-secondary);
+  transform: translateY(-2px);
+}
+
+#themeToggle svg {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+#themeToggle:hover svg {
+  transform: rotate(360deg);
+}
+
+/* Preloader */
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-primary);
+  transition: opacity 0.5s ease-out;
+}
+
+.preloader.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.preloader-spinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid var(--border-color);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Image Loading */
+img {
+  opacity: 0;
+  transition: opacity 0.5s ease-in;
+}
+
+img.loaded {
+  opacity: 1;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 600px) {
+  body {
+    margin: 12px auto;
+    padding: 0 16px;
+    font-size: 15px;
+  }
+
+  h1 { font-size: 1.875rem; }
+  h2 { font-size: 1.375rem; }
+
+  #profilePic {
+    width: 100px;
+    margin: 0 8px;
+  }
+
+  .date {
+    float: none;
+    display: block;
+    margin: 0 0 4px;
+    font-size: 0.85em;
+    text-align: left;
+  }
+
+  div.experience li,
+  div.consulting li {
+    margin: 12px 0;
+    padding-left: 8px;
+    line-height: 1.5;
+  }
+}

@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Angelfocus</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              light: {
+                bg: "#f5f3f2",
+                secondary: "#eae7e6",
+                "bg-lighter": "#f7f6f5",
+                text: "#0a0a0a",
+                "text-secondary": "#2b2b2b",
+                accent: "#800020",
+                "accent-hover": "#3d2f2b",
+                "border-color": "#e5e0de",
+                "selection-bg": "#e5e0de",
+                gradient: "linear-gradient(135deg, #f5f3f2 0%, #eae7e6 100%)",
+                link: "#800020",
+                "link-hover": "#666666",
+              },
+              dark: {
+                bg: "#2d2e34",
+                secondary: "#33343a",
+                text: "#e2e1e4",
+                "text-secondary": "#bcbbc0",
+                accent: "#e6a9b3",
+                "accent-hover": "#c4c3c8",
+                "border-color": "#3f4045",
+                "selection-bg": "#3f4045",
+                gradient:
+                  "linear-gradient(140deg, #2d2e34 0%, #31323a 30%, #33343a 70%, #35363c 100%)",
+                link: "#e6a9b3",
+                "link-hover": "#f0c4cb",
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body.break {
+        background-color: #fcd3bb;
+      }
+
+      body.long-break {
+        background-color: #fab1b1;
+      }
+
+      .button-raised {
+        box-shadow: rgb(235, 235, 235) 0px 6px 0px;
+        transform: translateY(-2px);
+        transition: all 0.15s ease;
+      }
+
+      .button-raised:active {
+        box-shadow: none;
+        transform: translateY(4px);
+      }
+
+      .button-pressed {
+        box-shadow: none;
+        transform: translateY(4px);
+        transition: all 0.15s ease;
+      }
+
+      /* Dark mode overrides */
+      .dark .button-raised {
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 6px 0px;
+      }
+
+      .dark .bg-white {
+        background-color: var(--dark-bg);
+      }
+
+      .dark .text-gray-900 {
+        color: var(--dark-text);
+      }
+
+      .dark .text-gray-800 {
+        color: var(--dark-text);
+      }
+
+      .dark .text-gray-700 {
+        color: var(--dark-text-secondary);
+      }
+
+      .dark .text-gray-600 {
+        color: var(--dark-text-secondary);
+      }
+
+      .dark .text-gray-500 {
+        color: var(--dark-text-secondary);
+      }
+
+      .dark .border-gray-200 {
+        border-color: var(--dark-border);
+      }
+    </style>
+  </head>
+
+  <body
+    class="min-h-screen text-light-text dark:text-dark-text bg-light-bg dark:bg-dark-bg transition-colors"
+  >
+    <div class="container mx-auto max-w-md px-4">
+      <!-- Header -->
+      <header class="py-4 flex justify-between items-center -mx-10">
+        <div class="flex items-center">
+          <span class="font-bold text-light-accent text-xl"
+            >👼 🕯️ Angelfocus</span
+          >
+        </div>
+        <div class="flex gap-2">
+          <a
+            href="../index.html"
+            class="text-light-accent hover:bg-white bg-light-secondary dark:bg-dark-secondary hover:bg-light-bg-lighter px-4 py-2 rounded transition-colors"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              viewBox="0 0 24 24"
+            >
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+          </a>
+          <button
+            class="text-light-accent hover:bg-white bg-light-secondary dark:bg-dark-secondary hover:bg-light-bg-lighter px-4 py-2 rounded transition-colors"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              viewBox="0 0 24 24"
+            >
+              <circle cx="12" cy="12" r="3"></circle>
+              <path
+                d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
+              ></path>
+            </svg>
+          </button>
+          <button
+            id="themeToggle"
+            aria-label="Toggle dark mode"
+            class="text-light-accent hover:bg-white bg-light-secondary dark:bg-dark-secondary hover:bg-light-bg-lighter px-4 py-2 rounded transition-colors"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              viewBox="0 0 24 24"
+            >
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+          </button>
+        </div>
+      </header>
+      <div class="h-px bg-light-accent dark:bg-dark-accen -mx-10"></div>
+
+      <!-- Task Input Modal -->
+      <div
+        id="task-modal"
+        class="fixed inset-0 bg-black/50 hidden items-center justify-center"
+      >
+        <div
+          class="bg-light-bg dark:bg-dark-bg rounded-lg w-full max-w-md mx-4 shadow-xl"
+        >
+
+          <div class="p-6">
+            <input
+              type="text"
+              id="task-name-input"
+              class="w-full text-xl font-medium text-light-accent dark:text-dark-text-secondary bg-light-secondary dark:bg-dark-secondary border-none px-3 mb-6 focus:ring focus:outline-none focus:ring-light-accent dark:focus:ring-dark-accent"
+              placeholder="What are you working on?"
+            />
+
+            <div class="mb-6">
+              <label
+                class="block text-light-accent dark:text-dark-text-secondary text-sm mb-2"
+                >Est Pomodoros</label
+              >
+              <div class="flex items-center gap-2">
+                <input
+                  type="number"
+                  id="task-pomos-input"
+                  class="w-20 px-3 py-2 border border-light-border dark:border-dark-border rounded text-light-accent dark:text-dark-text-secondary bg-light-secondary dark:bg-dark-secondary focus:ring focus:outline-none focus:ring-light-accent"
+                  value="1"
+                  min="1"
+                />
+                <div class="flex flex-col">
+                  <button
+                    class="text-light-accent dark:text-dark-text-secondary hover:text-light-accent dark:hover:text-dark-accent"
+                    onclick="adjustPomos(1)"
+                  >
+                    ▲
+                  </button>
+                  <button
+                    class="text-light-accent dark:text-dark-text-secondary hover:text-light-accent dark:hover:text-dark-accent"
+                    onclick="adjustPomos(-1)"
+                  >
+                    ▼
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-6">
+              <label
+                class="block text-light-accent dark:text-dark-text-secondary text-sm mb-2"
+                >Notes</label
+              >
+              <textarea
+                id="task-note-input"
+                class="w-full px-4 py-3 border border-light-border dark:border-dark-border rounded text-light-text-secondary dark:text-dark-text-secondary bg-light-secondary dark:bg-dark-secondary focus:ring focus:outline-none focus:ring-light-accent dark:focus:ring-dark-accent"
+                rows="3"
+                placeholder="Add notes..."
+              ></textarea>
+            </div>
+
+            <div class="flex justify-end gap-3">
+              <button
+                id="cancel-task-btn"
+                class="px-6 py-2 text-light-text-secondary dark:text-dark-text-secondary hover:bg-light-secondary dark:hover:bg-dark-secondary rounded"
+              >
+                Cancel
+              </button>
+              <button
+                id="save-task-btn"
+                class="px-6 py-2 bg-light-accent dark:bg-dark-accent text-light-bg dark:text-dark-bg rounded hover:bg-light-accent-hover dark:hover:bg-dark-accent-hover"
+              >
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Timer Section -->
+      <div
+        class="bg-light-secondary dark:bg-dark-secondary rounded-lg mt-4 p-4"
+      >
+        <div class="flex justify-center gap-2 mb-6">
+          <button
+            class="px-4 py-2 rounded bg-light-bg-lighter text-light-accent hover:bg-white timer-btn active"
+            data-type="pomodoro"
+          >
+            Pomodoro
+          </button>
+          <button
+            class="px-4 py-2 rounded bg-light-bg-lighter hover:bg-white text-light-accent timer-btn"
+            data-type="short-break"
+          >
+            Short Break
+          </button>
+          <button
+            class="px-4 py-2 rounded bg-light-bg-lighter hover:bg-white text-light-accent timer-btn"
+            data-type="long-break"
+          >
+            Long Break
+          </button>
+        </div>
+
+        <div class="text-center">
+          <h1
+            id="time"
+            class="text-[80px] leading-none font-bold text-light-accent mb-6"
+          >
+            25:00
+          </h1>
+          <div class="flex justify-center items-center gap-4">
+            <button
+              id="start-btn"
+              class="bg-light-bg-lighter text-light-accent px-16 py-3 rounded-lg text-xl font-bold hover:bg-white button-raised"
+            >
+              START
+            </button>
+            <button
+              id="skip-btn"
+              class="text-light-accent hover:text-white/80 transition-colors duration-200 hidden"
+            >
+              <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Current Task Display -->
+      <div class="text-center mt-6 mb-2">
+        <div class="text-light-accent text-sm" id="task-number">#1</div>
+        <h2
+          class="text-xl text-light-accent font-medium"
+          id="current-task-display"
+        >
+          Time to focus!
+        </h2>
+      </div>
+
+      <!-- Task Section -->
+      <div class="mt-8">
+        <!-- Tasks Header with Divider -->
+        <div class="mb-4 px-2">
+          <h3 class="font-bold text-light-accent text-xl mb-2">Tasks</h3>
+          <div class="h-px bg-light-accent -mx-10"></div>
+        </div>
+
+        <div class="bg-light-secondary dark:bg-dark-bg rounded-lg p-6">
+          <!-- Task List -->
+          <div id="task-list"></div>
+
+          <!-- Add Task Button -->
+          <button
+            id="add-task"
+            class="w-full py-3 mt-4 border-2 bg-light-bg-lighter border-dashed border-light-accent/50 dark:border-gray-600 rounded-lg text-light-accent dark:text-gray-400 hover:bg-white dark:hover:bg-gray-700"
+          >
+            + Add Task
+          </button>
+        </div>
+
+        <div class="bg-light dark:bg-dark-bg mt-4 p-4 rounded-lg h-[48px] flex items-center">
+          <div class="flex justify-between text-m text-light-accent w-full">
+            <span>Pomos: <span id="pomo-count">0/0</span></span>
+            <span>Finish at: <span id="finish-time">--:--</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Settings Modal -->
+      <div
+        id="settings-modal"
+        class="fixed inset-0 bg-black/50 hidden items-start justify-center pt-40"
+      >
+        <div
+          class="bg-white dark:bg-dark-bg rounded-lg w-full max-w-md mx-4 shadow-xl"
+        >
+          <div class="p-6">
+            <h2 class="text-xl font-bold text-light-accent dark:text-dark-text mb-6">
+              Settings
+            </h2>
+
+            <!-- Timer Settings -->
+            <div class="mb-6">
+
+              <div class="grid grid-cols-4 gap-4 mb-4">
+                <div class="flex flex-col justify-end">
+                  <label
+                    class="block text-light-accent dark:text-dark-text text-sm mb-2"
+                    >Pomodoro</label
+                  >
+                  <input
+                    type="number"
+                    id="pomodoro-time"
+                    class="w-full px-3 py-2 border border-gray-200 dark:border-gray-600 rounded text-light-accent dark:text-dark-text bg-white dark:bg-dark-secondary"
+                    value="25"
+                    min="1"
+                  />
+                </div>
+                <div class="flex flex-col justify-end">
+                  <label
+                    class="block text-light-accent dark:text-dark-text text-sm mb-2"
+                    >Short Break</label
+                  >
+                  <input
+                    type="number"
+                    id="short-break-time"
+                    class="w-full px-3 py-2 border border-gray-200 dark:border-gray-600 rounded text-light-accent dark:text-dark-text bg-white dark:bg-dark-secondary"
+                    value="5"
+                    min="1"
+                  />
+                </div>
+                <div class="flex flex-col justify-end">
+                  <label
+                    class="block text-light-accent dark:text-dark-text text-sm mb-2"
+                    >Long Break</label
+                  >
+                  <input
+                    type="number"
+                    id="long-break-time"
+                    class="w-full px-3 py-2 border border-gray-200 dark:border-gray-600 rounded text-light-accent dark:text-dark-text bg-white dark:bg-dark-secondary"
+                    value="15"
+                    min="1"
+                  />
+                </div>
+                <div class="flex flex-col justify-end">
+                  <label
+                    class="block text-light-accent dark:text-dark-text text-sm mb-2"
+                    >Long Interval</label
+                  >
+                  <input
+                    type="number"
+                    id="long-break-interval"
+                    class="w-full px-3 py-2 border border-gray-200 dark:border-gray-600 rounded text-light-accent dark:text-dark-text bg-white dark:bg-dark-secondary"
+                    value="4"
+                    min="1"
+                  />
+                </div>
+              </div>
+
+              <div class="space-y-4">
+                <div class="flex items-center justify-between">
+                  <span class="text-light-accent dark:text-dark-text"
+                    >Auto Switch Tasks</span
+                  >
+                  <label
+                    class="relative inline-flex items-center cursor-pointer"
+                  >
+                    <input
+                      type="checkbox"
+                      id="auto-switch-tasks"
+                      class="sr-only peer"
+                    />
+                    <div
+                      class="w-11 h-6 bg-gray-200 dark:bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-light-accent dark:peer-checked:bg-dark-accent"
+                    ></div>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex justify-end gap-3">
+              <button
+                id="cancel-settings-btn"
+                class="px-6 py-2 text-light-accent dark:text-dark-text hover:bg-light-secondary dark:hover:bg-dark-secondary rounded"
+              >
+                Cancel
+              </button>
+              <button
+                id="save-settings-btn"
+                class="px-6 py-2 bg-light-accent dark:bg-dark-accent text-white rounded hover:bg-light-accent-hover dark:hover:bg-dark-accent-hover"
+              >
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let timeLeft = 25 * 60;
+      let timerId = null;
+      let isRunning = false;
+      let currentMode = "pomodoro";
+      let pomoCount = 0;
+      let currentTaskIndex = -1;
+      let isButtonPressed = false;
+
+      // Audio setup for button sounds
+      const buttonPressSound = new Audio("../sounds/buttonpress.mp3");
+      const buttonUnclickSound = new Audio(
+        "../sounds/button_unclick_press.mp3"
+      );
+      const alarmSound = new Audio("../sounds/buttonpress.mp3"); // Using buttonpress for alarm temporarily
+
+      function playSound(type) {
+        if (type === "click" && !isButtonPressed) {
+          isButtonPressed = true;
+          buttonPressSound.currentTime = 0;
+          buttonPressSound.play();
+        } else if (type === "unclick" && isButtonPressed) {
+          isButtonPressed = false;
+          buttonUnclickSound.currentTime = 0;
+          buttonUnclickSound.play();
+        } else if (type === "alarm") {
+          alarmSound.currentTime = 0;
+          alarmSound.play();
+        }
+      }
+
+      const timerDisplay = document.getElementById("time");
+      const startButton = document.getElementById("start-btn");
+      const timerButtons = document.querySelectorAll(".timer-btn");
+      const pomoCounter = document.getElementById("pomo-count");
+      const finishTime = document.getElementById("finish-time");
+
+      // Add timer button click listeners
+      timerButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          if (isRunning) {
+            pauseTimer();
+          }
+          switchMode(btn.dataset.type);
+        });
+      });
+
+      // Add start button click listener
+      startButton.addEventListener("click", toggleTimer);
+
+      // Timer duration settings
+      const TIMER_SETTINGS = {
+        pomodoro: 25 * 60,
+        "short-break": 5 * 60,
+        "long-break": 15 * 60,
+      };
+
+      function switchMode(mode) {
+        currentMode = mode;
+        timeLeft = TIMER_SETTINGS[mode];
+        isRunning = false;
+        if (timerId) {
+          clearInterval(timerId);
+          timerId = null;
+        }
+
+        startButton.textContent = "START";
+        startButton.classList.remove("button-pressed");
+        startButton.classList.add("button-raised");
+        document.getElementById("skip-btn").classList.add("hidden");
+        updateTimerDisplay();
+
+        // Update active button
+        timerButtons.forEach((btn) => {
+          btn.classList.remove("active", "bg-white/20");
+          if (btn.dataset.type === mode) {
+            btn.classList.add("active", "bg-white/20");
+          }
+        });
+
+        // Update background color
+        document.body.classList.remove("break", "long-break");
+        if (mode === "short-break") {
+          document.body.classList.add("break");
+        } else if (mode === "long-break") {
+          document.body.classList.add("long-break");
+        }
+      }
+
+      function toggleTimer() {
+        if (!isRunning) {
+          playSound("click");
+          startTimer();
+          startButton.textContent = "PAUSE";
+          startButton.classList.remove("button-raised");
+          startButton.classList.add("button-pressed");
+          document.getElementById("skip-btn").classList.remove("hidden");
+        } else {
+          playSound("unclick");
+          pauseTimer();
+          startButton.textContent = "START";
+          startButton.classList.remove("button-pressed");
+          startButton.classList.add("button-raised");
+          document.getElementById("skip-btn").classList.add("hidden");
+        }
+      }
+
+      function pauseTimer() {
+        if (timerId) {
+          clearInterval(timerId);
+          timerId = null;
+          isRunning = false;
+          startButton.textContent = "START";
+          startButton.classList.remove("button-pressed");
+          startButton.classList.add("button-raised");
+          updatePomoStats();
+        }
+      }
+
+      // Task management
+      let tasks = [];
+      const taskList = document.getElementById("task-list");
+      const addTaskButton = document.getElementById("add-task");
+      const taskModal = document.getElementById("task-modal");
+      const taskNameInput = document.getElementById("task-name-input");
+      const taskPomosInput = document.getElementById("task-pomos-input");
+      const taskNoteInput = document.getElementById("task-note-input");
+      const cancelTaskBtn = document.getElementById("cancel-task-btn");
+      const saveTaskBtn = document.getElementById("save-task-btn");
+
+      function showTaskModal() {
+        taskModal.classList.remove("hidden");
+        taskModal.classList.add("flex");
+        taskNameInput.value = "";
+        taskPomosInput.value = "1";
+        taskNoteInput.value = "";
+        taskNameInput.focus();
+      }
+
+      function hideTaskModal() {
+        taskModal.classList.add("hidden");
+        taskModal.classList.remove("flex");
+      }
+
+      function adjustPomos(delta) {
+        const newValue = parseInt(taskPomosInput.value) + delta;
+        if (newValue >= 1) {
+          taskPomosInput.value = newValue;
+        }
+      }
+
+      function handleTaskSubmit() {
+        const taskName = taskNameInput.value.trim();
+        const estimatedPomos = parseInt(taskPomosInput.value) || 1;
+        const note = taskNoteInput.value.trim();
+
+        if (taskName) {
+          addTask(taskName, estimatedPomos, note);
+          hideTaskModal();
+        }
+      }
+
+      // Update addTask function to accept note
+      function addTask(taskName, estimatedPomos = 1, note = "") {
+        const task = {
+          name: taskName,
+          estimatedPomos: estimatedPomos,
+          completedPomos: 0,
+          completed: false,
+          note: note,
+        };
+        tasks.push(task);
+        updateTaskDisplay();
+        saveTasks();
+      }
+
+      // Event Listeners for modal
+      addTaskButton.addEventListener("click", showTaskModal);
+      cancelTaskBtn.addEventListener("click", hideTaskModal);
+      saveTaskBtn.addEventListener("click", handleTaskSubmit);
+
+      // Close modal when clicking outside
+      taskModal.addEventListener("click", (e) => {
+        if (e.target === taskModal) {
+          hideTaskModal();
+        }
+      });
+
+      // Handle Enter key in task name input
+      taskNameInput.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") {
+          handleTaskSubmit();
+        }
+      });
+
+      // Remove old click handler for add task button
+      addTaskButton.removeEventListener("click", () => {
+        const taskName = prompt("What are you working on?");
+        if (taskName && taskName.trim()) {
+          addTask(taskName.trim());
+        }
+      });
+
+      // Load tasks from localStorage
+      function loadTasks() {
+        const savedTasks = localStorage.getItem("angelFocusTasks");
+        if (savedTasks) {
+          tasks = JSON.parse(savedTasks);
+          updateTaskDisplay();
+        }
+      }
+
+      // Save tasks to localStorage
+      function saveTasks() {
+        localStorage.setItem("angelFocusTasks", JSON.stringify(tasks));
+      }
+
+      function createTaskElement(task) {
+        const taskDiv = document.createElement("div");
+        taskDiv.className =
+          "bg-gray-50 dark:bg-dark-secondary p-4 rounded-lg mb-3";
+        taskDiv.draggable = true;
+        taskDiv.dataset.taskId = tasks.indexOf(task);
+
+        // Regular view mode
+        const regularView = document.createElement("div");
+        regularView.className = "flex flex-col";
+        regularView.innerHTML = `
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <input type="checkbox" class="w-5 h-5 rounded border-gray-300 dark:border-gray-600 text-blue-600 focus:ring-blue-500" ${
+                          task.completed ? "checked" : ""
+                        }>
+                        <span class="text-gray-900 dark:text-gray-200 ${
+                          task.completed ? "line-through" : ""
+                        }">${task.name}</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="text-gray-500 dark:text-gray-400">${
+                          task.completedPomos
+                        }/${task.estimatedPomos}</span>
+                        <button class="text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 three-dots-btn">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                ${
+                  task.note
+                    ? `<div class="mt-2 p-2 bg-yellow-50 dark:bg-yellow-900/20 text-gray-700 dark:text-gray-300 rounded-lg text-sm">${task.note}</div>`
+                    : ""
+                }
+            `;
+
+        // Edit mode
+        const editView = document.createElement("div");
+        editView.className = "hidden";
+        editView.innerHTML = `
+                <div class="bg-white dark:bg-dark-bg p-6 rounded-lg shadow-lg">
+                    <div class="mb-4">
+                        <input type="text" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 dark:text-gray-200 bg-white dark:bg-dark-secondary" 
+                               placeholder="What are you working on?">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Act / Est Pomodoros</label>
+                        <div class="flex items-center gap-3">
+                            <input type="number" class="completed-pomos w-20 p-3 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-gray-200 bg-white dark:bg-dark-secondary" min="0">
+                            <span class="text-gray-500 dark:text-gray-400">/</span>
+                            <input type="number" class="estimated-pomos w-20 p-3 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-gray-200 bg-white dark:bg-dark-secondary" min="1">
+                            <div class="flex flex-col gap-1">
+                                <button class="increment-btn p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">
+                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M7 14l5-5 5 5z"/>
+                                    </svg>
+                                </button>
+                                <button class="decrement-btn p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">
+                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M7 10l5 5 5-5z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Note</label>
+                        <textarea class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-gray-200 bg-white dark:bg-dark-secondary" 
+                                  rows="3"></textarea>
+                    </div>
+                    <div class="flex justify-end gap-3">
+                        <button class="delete-btn px-4 py-2 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg">Delete</button>
+                        <button class="cancel-btn px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">Cancel</button>
+                        <button class="save-btn px-4 py-2 bg-gray-900 dark:bg-gray-700 text-white rounded-lg hover:bg-gray-800 dark:hover:bg-gray-600">Save</button>
+                    </div>
+                </div>
+            `;
+
+        taskDiv.appendChild(regularView);
+        taskDiv.appendChild(editView);
+
+        // Event listeners for drag and drop
+        taskDiv.addEventListener("dragstart", (e) => {
+          e.dataTransfer.setData("text/plain", e.target.dataset.taskId);
+          taskDiv.classList.add("opacity-50");
+        });
+
+        taskDiv.addEventListener("dragend", () => {
+          taskDiv.classList.remove("opacity-50");
+        });
+
+        taskDiv.addEventListener("dragover", (e) => {
+          e.preventDefault();
+          const draggingElement = document.querySelector(".opacity-50");
+          const notDraggingElement =
+            taskDiv !== draggingElement ? taskDiv : null;
+          if (notDraggingElement) {
+            const draggingRect = draggingElement.getBoundingClientRect();
+            const notDraggingRect = notDraggingElement.getBoundingClientRect();
+            if (draggingRect.y < notDraggingRect.y) {
+              if (notDraggingElement.nextSibling) {
+                taskList.insertBefore(
+                  draggingElement,
+                  notDraggingElement.nextSibling
+                );
+              } else {
+                taskList.appendChild(draggingElement);
+              }
+            } else {
+              taskList.insertBefore(draggingElement, notDraggingElement);
+            }
+          }
+        });
+
+        taskDiv.addEventListener("drop", (e) => {
+          e.preventDefault();
+          const sourceId = parseInt(e.dataTransfer.getData("text/plain"));
+          const targetId = parseInt(taskDiv.dataset.taskId);
+          if (sourceId !== targetId) {
+            const [movedTask] = tasks.splice(sourceId, 1);
+            tasks.splice(targetId, 0, movedTask);
+            updateTaskDisplay();
+            saveTasks();
+          }
+        });
+
+        // Event listeners for editing
+        const threeDotsBtn = taskDiv.querySelector(".three-dots-btn");
+        const saveBtn = editView.querySelector(".save-btn");
+        const cancelBtn = editView.querySelector(".cancel-btn");
+        const deleteBtn = editView.querySelector(".delete-btn");
+        const incrementBtn = editView.querySelector(".increment-btn");
+        const decrementBtn = editView.querySelector(".decrement-btn");
+
+        threeDotsBtn.addEventListener("click", () => {
+          // Populate form fields with current task data
+          const nameInput = editView.querySelector('input[type="text"]');
+          const completedPomosInput =
+            editView.querySelector(".completed-pomos");
+          const estimatedPomosInput =
+            editView.querySelector(".estimated-pomos");
+          const noteInput = editView.querySelector("textarea");
+
+          // Set values from task
+          nameInput.value = task.name;
+          completedPomosInput.value = task.completedPomos;
+          estimatedPomosInput.value = task.estimatedPomos;
+          noteInput.value = task.note || "";
+
+          regularView.classList.add("hidden");
+          editView.classList.remove("hidden");
+        });
+
+        saveBtn.addEventListener("click", () => {
+          task.name = editView.querySelector('input[type="text"]').value.trim();
+          task.completedPomos =
+            parseInt(editView.querySelector(".completed-pomos").value) || 0;
+          task.estimatedPomos = Math.max(
+            1,
+            parseInt(editView.querySelector(".estimated-pomos").value) || 1
+          );
+          task.note = editView.querySelector("textarea").value.trim();
+
+          regularView.classList.remove("hidden");
+          editView.classList.add("hidden");
+          updateTaskDisplay();
+          saveTasks();
+        });
+
+        cancelBtn.addEventListener("click", () => {
+          regularView.classList.remove("hidden");
+          editView.classList.add("hidden");
+        });
+
+        deleteBtn.addEventListener("click", () => {
+          const taskIndex = tasks.indexOf(task);
+          deleteTask(taskIndex);
+        });
+
+        incrementBtn.addEventListener("click", () => {
+          const estimatedInput = editView.querySelector(".estimated-pomos");
+          estimatedInput.value = parseInt(estimatedInput.value) + 1;
+        });
+
+        decrementBtn.addEventListener("click", () => {
+          const estimatedInput = editView.querySelector(".estimated-pomos");
+          const newValue = parseInt(estimatedInput.value) - 1;
+          if (newValue >= 1) {
+            estimatedInput.value = newValue;
+          }
+        });
+
+        const checkbox = taskDiv.querySelector('input[type="checkbox"]');
+        checkbox.addEventListener("change", () => {
+          task.completed = checkbox.checked;
+          if (checkbox.checked) {
+            task.completedPomos = task.estimatedPomos;
+          }
+          updateTaskDisplay();
+          saveTasks();
+        });
+
+        return taskDiv;
+      }
+
+      function deleteTask(index) {
+        tasks.splice(index, 1);
+        updateTaskDisplay();
+        saveTasks();
+      }
+
+      function updateTaskDisplay() {
+        taskList.innerHTML = "";
+        tasks.forEach((task) => {
+          taskList.appendChild(createTaskElement(task));
+        });
+        updateCurrentTaskDisplay();
+        updatePomoStats();
+      }
+
+      function updateCurrentTaskDisplay() {
+        const taskNumber = document.getElementById("task-number");
+        const currentTaskDisplay = document.getElementById(
+          "current-task-display"
+        );
+
+        if (tasks.length === 0) {
+          taskNumber.textContent = "#1";
+          currentTaskDisplay.textContent = "Time to focus!";
+          return;
+        }
+
+        // Find first incomplete task
+        currentTaskIndex = tasks.findIndex((task) => !task.completed);
+        if (currentTaskIndex === -1) {
+          currentTaskIndex = tasks.length - 1;
+        }
+
+        const currentTask = tasks[currentTaskIndex];
+        taskNumber.textContent = `#${currentTaskIndex + 1}`;
+        currentTaskDisplay.textContent = currentTask.name;
+      }
+
+      function skipTimer() {
+        if (!isRunning) return;
+
+        timeLeft = 0;
+        updateTimerDisplay();
+
+        clearInterval(timerId);
+        timerId = null;
+
+        if (currentMode === "pomodoro") {
+          pomoCount++;
+          pomoCounter.textContent = `${pomoCount}/4`;
+          if (pomoCount % 4 === 0) {
+            switchMode("long-break");
+          } else {
+            switchMode("short-break");
+          }
+        } else {
+          switchMode("pomodoro");
+        }
+      }
+
+      // Add skip button event listener
+      document.getElementById("skip-btn").addEventListener("click", skipTimer);
+
+      // Initialize current task display
+      updateCurrentTaskDisplay();
+
+      // Initialize
+      updateTimerDisplay();
+      updatePomoStats();
+
+      // Add notification permission handling with persistence
+      function handleNotificationPermission() {
+        const notificationDecision = localStorage.getItem(
+          "angelFocusNotificationDecision"
+        );
+
+        if (!notificationDecision && "Notification" in window) {
+          // Only ask if they haven't made a decision before
+          Notification.requestPermission().then((permission) => {
+            localStorage.setItem("angelFocusNotificationDecision", permission);
+          });
+        }
+      }
+
+      // Call notification permission handler
+      handleNotificationPermission();
+
+      function updateTimerDisplay() {
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        timerDisplay.textContent = `${String(minutes).padStart(
+          2,
+          "0"
+        )}:${String(seconds).padStart(2, "0")}`;
+        document.title = `${timerDisplay.textContent} - Angelfocus`;
+        updatePomoStats();
+      }
+
+      function updatePomoStats() {
+        // Calculate total and completed pomos
+        const totalPomos = tasks.reduce(
+          (sum, task) => sum + task.estimatedPomos,
+          0
+        );
+        const completedPomos = tasks.reduce(
+          (sum, task) => sum + task.completedPomos,
+          0
+        );
+        pomoCounter.textContent = `${completedPomos}/${totalPomos}`;
+
+        // Calculate finish time based on remaining tasks
+        if (!isRunning) {
+          finishTime.textContent = "--:--";
+          return;
+        }
+
+        const now = new Date();
+        let totalTimeLeft = timeLeft; // Current timer
+
+        // Count remaining pomos and breaks
+        let remainingPomos = 0;
+        let shortBreaksNeeded = 0;
+        let longBreaksNeeded = 0;
+
+        tasks.forEach((task) => {
+          const remaining = task.estimatedPomos - task.completedPomos;
+          if (remaining > 0) remainingPomos += remaining;
+        });
+
+        // Calculate breaks needed
+        if (remainingPomos > 0) {
+          // Subtract current pomo if we're in pomodoro mode
+          if (currentMode === "pomodoro") remainingPomos--;
+
+          // Calculate breaks
+          shortBreaksNeeded =
+            Math.floor(remainingPomos / 4) * 3 + (remainingPomos % 4);
+          longBreaksNeeded = Math.floor(remainingPomos / 4);
+
+          // Don't count current break if we're in break mode
+          if (currentMode === "short-break") shortBreaksNeeded--;
+          if (currentMode === "long-break") longBreaksNeeded--;
+        }
+
+        // Add up all the time
+        totalTimeLeft += remainingPomos * TIMER_SETTINGS.pomodoro;
+        totalTimeLeft += shortBreaksNeeded * TIMER_SETTINGS["short-break"];
+        totalTimeLeft += longBreaksNeeded * TIMER_SETTINGS["long-break"];
+
+        // Calculate finish time
+        const finishAt = new Date(now.getTime() + totalTimeLeft * 1000);
+        const hours = Math.floor(totalTimeLeft / 3600);
+        finishTime.textContent = finishAt.toLocaleTimeString("en-US", {
+          hour12: false,
+          hour: "2-digit",
+          minute: "2-digit",
+        });
+        if (hours > 0) {
+          finishTime.textContent += ` (${hours}h ${Math.floor(
+            (totalTimeLeft % 3600) / 60
+          )}m)`;
+        } else {
+          finishTime.textContent += ` (${Math.floor(totalTimeLeft / 60)}m)`;
+        }
+      }
+
+      function startTimer() {
+        if (timerId) return;
+
+        isRunning = true;
+        startButton.textContent = "PAUSE";
+        startButton.classList.remove("button-raised");
+        startButton.classList.add("button-pressed");
+        document.getElementById("skip-btn").classList.remove("hidden");
+
+        timerId = setInterval(() => {
+          timeLeft--;
+          updateTimerDisplay();
+
+          if (timeLeft === 0) {
+            clearInterval(timerId);
+            timerId = null;
+            handleTimerCompletion();
+          }
+        }, 1000);
+      }
+
+      // Add settings management
+      const SETTINGS_KEY = "angelFocusSettings";
+      let settings = {
+        pomodoro: 25,
+        shortBreak: 5,
+        longBreak: 15,
+        longBreakInterval: 4,
+        autoSwitchTasks: false,
+      };
+
+      function loadSettings() {
+        const savedSettings = localStorage.getItem(SETTINGS_KEY);
+        if (savedSettings) {
+          settings = { ...settings, ...JSON.parse(savedSettings) };
+        }
+        applySettings();
+      }
+
+      function saveSettings() {
+        localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings));
+        applySettings();
+      }
+
+      function applySettings() {
+        // Update timer settings
+        TIMER_SETTINGS.pomodoro = settings.pomodoro * 60;
+        TIMER_SETTINGS["short-break"] = settings.shortBreak * 60;
+        TIMER_SETTINGS["long-break"] = settings.longBreak * 60;
+
+        // Update form values
+        document.getElementById("pomodoro-time").value = settings.pomodoro;
+        document.getElementById("short-break-time").value = settings.shortBreak;
+        document.getElementById("long-break-time").value = settings.longBreak;
+        document.getElementById("long-break-interval").value =
+          settings.longBreakInterval;
+        document.getElementById("auto-switch-tasks").checked =
+          settings.autoSwitchTasks;
+
+        // If timer is not running, update current display
+        if (!isRunning) {
+          timeLeft = TIMER_SETTINGS[currentMode];
+          updateTimerDisplay();
+        }
+      }
+
+      // Settings modal management
+      const settingsModal = document.getElementById("settings-modal");
+      const settingsButton = document.querySelector(
+        "button svg circle[cx='12'][cy='12'][r='3']"
+      ).closest("button");
+      const cancelSettingsBtn = document.getElementById("cancel-settings-btn");
+      const saveSettingsBtn = document.getElementById("save-settings-btn");
+
+      settingsButton.addEventListener("click", () => {
+        settingsModal.classList.remove("hidden");
+        settingsModal.classList.add("flex");
+      });
+
+      cancelSettingsBtn.addEventListener("click", () => {
+        settingsModal.classList.add("hidden");
+        settingsModal.classList.remove("flex");
+        applySettings(); // Reset form to current settings
+      });
+
+      saveSettingsBtn.addEventListener("click", () => {
+        settings.pomodoro = parseInt(
+          document.getElementById("pomodoro-time").value
+        );
+        settings.shortBreak = parseInt(
+          document.getElementById("short-break-time").value
+        );
+        settings.longBreak = parseInt(
+          document.getElementById("long-break-time").value
+        );
+        settings.longBreakInterval = parseInt(
+          document.getElementById("long-break-interval").value
+        );
+        settings.autoSwitchTasks =
+          document.getElementById("auto-switch-tasks").checked;
+
+        saveSettings();
+        settingsModal.classList.add("hidden");
+        settingsModal.classList.remove("flex");
+      });
+
+      // Close modal when clicking outside
+      settingsModal.addEventListener("click", (e) => {
+        if (e.target === settingsModal) {
+          settingsModal.classList.add("hidden");
+          settingsModal.classList.remove("flex");
+          applySettings(); // Reset form to current settings
+        }
+      });
+
+      // Load settings on startup
+      loadSettings();
+
+      // Load tasks on startup
+      loadTasks();
+
+      // Modify timer completion to handle auto-start
+      function handleTimerCompletion() {
+        if (currentMode === "pomodoro") {
+          pomoCount++;
+          if (pomoCount % settings.longBreakInterval === 0) {
+            switchMode("long-break");
+          } else {
+            switchMode("short-break");
+          }
+
+          // Handle auto switch tasks
+          if (settings.autoSwitchTasks && currentTaskIndex !== -1) {
+            const currentTask = tasks[currentTaskIndex];
+            if (currentTask) {
+              currentTask.completedPomos++;
+              if (currentTask.completedPomos >= currentTask.estimatedPomos) {
+                currentTask.completed = true;
+                // Find next incomplete task
+                const nextTaskIndex = tasks.findIndex(
+                  (task, index) => index > currentTaskIndex && !task.completed
+                );
+                if (nextTaskIndex !== -1) {
+                  currentTaskIndex = nextTaskIndex;
+                }
+              }
+              updateTaskDisplay();
+              saveTasks();
+            }
+          }
+        } else {
+          switchMode("pomodoro");
+        }
+
+        // Play notification sound
+        playSound("alarm");
+
+        // Show browser notification
+        if (Notification.permission === "granted") {
+          new Notification(
+            currentMode === "pomodoro" ? "Time for a break!" : "Break is over!"
+          );
+        }
+      }
+
+      function startTimer() {
+        if (timerId) return;
+
+        isRunning = true;
+        startButton.textContent = "PAUSE";
+        startButton.classList.remove("button-raised");
+        startButton.classList.add("button-pressed");
+        document.getElementById("skip-btn").classList.remove("hidden");
+
+        timerId = setInterval(() => {
+          timeLeft--;
+          updateTimerDisplay();
+
+          if (timeLeft === 0) {
+            clearInterval(timerId);
+            timerId = null;
+            handleTimerCompletion();
+          }
+        }, 1000);
+      }
+
+      // Add timer button click listeners
+      timerButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          if (isRunning) {
+            pauseTimer();
+          }
+          switchMode(btn.dataset.type);
+        });
+      });
+
+      // Theme toggle functionality
+      const themeToggle = document.getElementById("themeToggle");
+      const prefersDarkScheme = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      );
+
+      // Function to toggle theme
+      function toggleTheme() {
+        document.documentElement.classList.toggle("dark");
+
+        // Save preference
+        const isDark = document.documentElement.classList.contains("dark");
+        localStorage.setItem("angelFocusTheme", isDark ? "dark" : "light");
+
+        // Update icon
+        updateThemeIcon();
+      }
+
+      // Function to update the theme icon
+      function updateThemeIcon() {
+        const isDark = document.documentElement.classList.contains("dark");
+        const svg = themeToggle.querySelector("svg");
+        
+        if (isDark) {
+          svg.innerHTML = `<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>`;
+        } else {
+          svg.innerHTML = `
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          `;
+        }
+      }
+
+      // Load saved preference
+      const savedTheme = localStorage.getItem("angelFocusTheme");
+      if (savedTheme === "dark") {
+        document.documentElement.classList.add("dark");
+      } else if (savedTheme === "light") {
+        document.documentElement.classList.add("light");
+      }
+
+      // Listen for clicks on the toggle
+      themeToggle.addEventListener("click", toggleTheme);
+
+      // Listen for system theme changes
+      prefersDarkScheme.addEventListener("change", updateThemeIcon);
+
+      // Initial icon update
+      updateThemeIcon();
+    </script>
+  </body>
+</html>
