@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "node build.js",
-    "dev": "nodemon --watch src --ext '*' --exec \"npx tailwindcss -i ./src/main.css -o ./src/styles/output.css && http-server ./public\""
+    "dev": "nodemon --watch src --ext '*' --exec \"npx tailwindcss -i ./src/styles/main.css -o ./src/styles/output.css && http-server ./src\""
 
   },
   "repository": {
