@@ -10,7 +10,7 @@ async function build() {
   // Build Tailwind CSS
   console.log('Building Tailwind CSS...');
   await new Promise((resolve, reject) => {
-    exec('npx tailwindcss -i ./src/input.css -o ./src/styles/output.css', (error) => {
+    exec('npx tailwindcss -i ./src/styles/main.css -o ./src/styles/output.css', (error) => {
       if (error) reject(error);
       else resolve();
     });
