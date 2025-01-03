@@ -1,0 +1,26 @@
+{
+  "name": "angelopoulos.xyz",
+  "version": "1.0.0",
+  "description": "This is the source for [angelopoulos.xyz](https://angelopoulos.xyz).",
+  "main": "index.js",
+  "scripts": {
+    "build": "tailwindcss -i ./styles/main.css -o ./styles/output.css",
+    "watch": "tailwindcss -i ./styles/main.css -o ./styles/output.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/christianangelopoulos/angelopoulos.xyz.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/christianangelopoulos/angelopoulos.xyz/issues"
+  },
+  "homepage": "https://github.com/christianangelopoulos/angelopoulos.xyz#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17"
+  }
+}

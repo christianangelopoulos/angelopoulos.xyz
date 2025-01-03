@@ -52,6 +52,24 @@
                         <line x1="3" y1="18" x2="21" y2="18"></line>
                     </svg>
                 </button>
+                <div class="popup-menu">
+                    <a href="/">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" 
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                        Home
+                    </a>
+                    <a href="/apps/pomodoro.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" 
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        Pomodoro
+                    </a>
+                </div>
             </div>
         </div>
     </header>
@@ -294,11 +312,19 @@
         // Initial icon update
         updateThemeIcon();
 
-        // Menu toggle functionality
+        // Menu toggle
         const menuToggle = document.getElementById('menuToggle');
+        const popupMenu = document.querySelector('.popup-menu');
+
         menuToggle.addEventListener('click', () => {
-            // Add your menu toggle logic here
-            console.log('Menu clicked');
+            popupMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!menuToggle.contains(event.target) && !popupMenu.contains(event.target)) {
+                popupMenu.classList.remove('active');
+            }
         });
     </script>
 </body>

@@ -4,55 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Angelfocus</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            colors: {
-              light: {
-                bg: "#f5f3f2",
-                secondary: "#eae7e6",
-                "bg-lighter": "#f7f6f5",
-                text: "#0a0a0a",
-                "text-secondary": "#2b2b2b",
-                accent: "#800020",
-                "accent-hover": "#3d2f2b",
-                "border-color": "#e5e0de",
-                "selection-bg": "#e5e0de",
-                gradient: "linear-gradient(135deg, #f5f3f2 0%, #eae7e6 100%)",
-                link: "#800020",
-                "link-hover": "#666666",
-              },
-              dark: {
-                bg: "#2d2e34",
-                secondary: "#33343a",
-                text: "#e2e1e4",
-                "text-secondary": "#bcbbc0",
-                accent: "#e6a9b3",
-                "accent-hover": "#c4c3c8",
-                "border-color": "#3f4045",
-                "selection-bg": "#3f4045",
-                gradient:
-                  "linear-gradient(140deg, #2d2e34 0%, #31323a 30%, #33343a 70%, #35363c 100%)",
-                link: "#e6a9b3",
-                "link-hover": "#f0c4cb",
-              },
-            },
-          },
-        },
-      };
-    </script>
+    <link href="../styles/output.css" rel="stylesheet">
     <style>
-      body.break {
-        background-color: #fcd3bb;
-      }
-
-      body.long-break {
-        background-color: #fab1b1;
-      }
-
       .button-raised {
         box-shadow: rgb(235, 235, 235) 0px 6px 0px;
         transform: translateY(-2px);
@@ -73,10 +26,6 @@
       /* Dark mode overrides */
       .dark .button-raised {
         box-shadow: rgba(0, 0, 0, 0.3) 0px 6px 0px;
-      }
-
-      .dark .bg-white {
-        background-color: var(--dark-bg);
       }
 
       .dark .text-gray-900 {
@@ -102,6 +51,92 @@
       .dark .border-gray-200 {
         border-color: var(--dark-border);
       }
+
+      /* Custom checkbox styles */
+      .custom-checkbox {
+        position: relative;
+        width: 1.5rem;
+        height: 1.5rem;
+        border-radius: 6px;
+        border: 2px solid #cbd5e1;
+        transition: all 0.2s ease;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+      }
+
+      .dark .custom-checkbox {
+        border-color: #475569;
+      }
+
+      .custom-checkbox input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+      }
+
+      .custom-checkbox .checkmark {
+        position: absolute;
+        opacity: 0;
+        transform: scale(0);
+        transition: all 0.2s ease;
+      }
+
+      .custom-checkbox input:checked ~ .checkmark {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      .custom-checkbox input:checked ~ .checkmark path {
+        stroke-dashoffset: 0;
+      }
+
+      .custom-checkbox:hover {
+        border-color: var(--light-accent);
+        background: var(--light-accent-hover);
+      }
+
+      .dark .custom-checkbox:hover {
+        border-color: var(--dark-accent);
+        background: var(--dark-accent-hover);
+      }
+
+      /* Fix for checked state */
+      .custom-checkbox input:checked ~ .checkmark {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      .custom-checkbox input:checked + label,
+      .custom-checkbox input:checked {
+        background: var(--light-accent);
+        border-color: var(--light-accent);
+      }
+
+      .dark .custom-checkbox input:checked + label,
+      .dark .custom-checkbox input:checked {
+        background: var(--dark-accent);
+        border-color: var(--dark-accent);
+      }
+
+      /* When checked, change the checkbox background */
+      .custom-checkbox input:checked ~ .custom-checkbox {
+        background: var(--light-accent);
+        border-color: var(--light-accent);
+      }
+
+      .dark .custom-checkbox input:checked ~ .custom-checkbox {
+        background: var(--dark-accent);
+        border-color: var(--dark-accent);
+      }
+
+      #task-modal {
+        z-index: 50;
+      }
     </style>
   </head>
 
@@ -112,14 +147,14 @@
       <!-- Header -->
       <header class="py-4 flex justify-between items-center -mx-10">
         <div class="flex items-center">
-          <span class="font-bold text-light-accent text-xl"
+          <span class="font-bold text-light-and-dark text-xl"
             >👼 🕯️ Angelfocus</span
           >
         </div>
         <div class="flex gap-2">
           <a
             href="../index.html"
-            class="text-light-accent hover:bg-white bg-light-secondary dark:bg-dark-secondary hover:bg-light-bg-lighter px-4 py-2 rounded transition-colors"
+            class="btn-primary px-4 py-2 rounded transition-colors"
           >
             <svg
               class="w-6 h-6"
@@ -135,7 +170,7 @@
             </svg>
           </a>
           <button
-            class="text-light-accent hover:bg-white bg-light-secondary dark:bg-dark-secondary hover:bg-light-bg-lighter px-4 py-2 rounded transition-colors"
+            class="btn-primary px-4 py-2 rounded transition-colors"
           >
             <svg
               class="w-6 h-6"
@@ -155,7 +190,7 @@
           <button
             id="themeToggle"
             aria-label="Toggle dark mode"
-            class="text-light-accent hover:bg-white bg-light-secondary dark:bg-dark-secondary hover:bg-light-bg-lighter px-4 py-2 rounded transition-colors"
+            class="btn-primary px-4 py-2 rounded transition-colors"
           >
             <svg
               class="w-6 h-6"
@@ -179,47 +214,48 @@
           </button>
         </div>
       </header>
-      <div class="h-px bg-light-accent dark:bg-dark-accen -mx-10"></div>
+      <div class="h-px bg-light-accent dark:bg-dark-accent -mx-10"></div>
 
       <!-- Task Input Modal -->
       <div
         id="task-modal"
-        class="fixed inset-0 bg-black/50 hidden items-center justify-center"
+        class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50"
       >
         <div
           class="bg-light-bg dark:bg-dark-bg rounded-lg w-full max-w-md mx-4 shadow-xl"
         >
 
           <div class="p-6">
+            <label class="block text-light-accent dark:text-dark-accent text-sm mb-2">Task Name</label>
             <input
               type="text"
               id="task-name-input"
-              class="w-full text-xl font-medium text-light-accent dark:text-dark-text-secondary bg-light-secondary dark:bg-dark-secondary border-none px-3 mb-6 focus:ring focus:outline-none focus:ring-light-accent dark:focus:ring-dark-accent"
+              class="w-full text-base font-normal text-gray-600 dark:text-gray-600 bg-light-secondary dark:bg-dark-secondary border border-light-border dark:border-dark-border rounded px-3 py-2 mb-6 focus:ring focus:outline-none focus:ring-light-accent dark:focus:ring-dark-accent placeholder:text-gray-400 dark:placeholder:text-gray-500"
               placeholder="What are you working on?"
             />
 
             <div class="mb-6">
               <label
-                class="block text-light-accent dark:text-dark-text-secondary text-sm mb-2"
+                class="block text-light-accent dark:text-dark-accent text-sm mb-2"
                 >Est Pomodoros</label
               >
               <div class="flex items-center gap-2">
                 <input
                   type="number"
                   id="task-pomos-input"
-                  class="w-20 px-3 py-2 border border-light-border dark:border-dark-border rounded text-light-accent dark:text-dark-text-secondary bg-light-secondary dark:bg-dark-secondary focus:ring focus:outline-none focus:ring-light-accent"
+                  class="w-20 px-3 py-2 border border-light-border dark:border-dark-border rounded text-gray-600 dark:text-gray-400 bg-light-secondary dark:bg-dark-secondary focus:ring focus:outline-none focus:ring-light-accent dark:focus:ring-dark-accent"
                   value="1"
                   min="1"
                 />
                 <div class="flex flex-col">
                   <button
-                    class="text-light-accent dark:text-dark-text-secondary hover:text-light-accent dark:hover:text-dark-accent"
+                    class="text-light-accent dark:text-dark-accent hover:text-light-accent-hover dark:hover:text-dark-accent-hover"
                     onclick="adjustPomos(1)"
                   >
                     ▲
                   </button>
                   <button
-                    class="text-light-accent dark:text-dark-text-secondary hover:text-light-accent dark:hover:text-dark-accent"
+                    class="text-light-accent dark:text-dark-accent hover:text-light-accent-hover dark:hover:text-dark-accent-hover"
                     onclick="adjustPomos(-1)"
                   >
                     ▼
@@ -230,12 +266,12 @@
 
             <div class="mb-6">
               <label
-                class="block text-light-accent dark:text-dark-text-secondary text-sm mb-2"
+                class="block text-light-accent dark:text-dark-accent text-sm mb-2"
                 >Notes</label
               >
               <textarea
                 id="task-note-input"
-                class="w-full px-4 py-3 border border-light-border dark:border-dark-border rounded text-light-text-secondary dark:text-dark-text-secondary bg-light-secondary dark:bg-dark-secondary focus:ring focus:outline-none focus:ring-light-accent dark:focus:ring-dark-accent"
+                class="w-full px-4 py-3 border border-light-border dark:border-dark-border rounded text-gray-600 dark:text-gray-400 bg-light-secondary dark:bg-dark-secondary focus:ring focus:outline-none focus:ring-light-accent dark:focus:ring-dark-accent placeholder:text-gray-400 dark:placeholder:text-gray-500"
                 rows="3"
                 placeholder="Add notes..."
               ></textarea>
@@ -244,7 +280,7 @@
             <div class="flex justify-end gap-3">
               <button
                 id="cancel-task-btn"
-                class="px-6 py-2 text-light-text-secondary dark:text-dark-text-secondary hover:bg-light-secondary dark:hover:bg-dark-secondary rounded"
+                class="px-6 py-2 text-light-accent dark:text-dark-accent hover:bg-light-secondary dark:hover:bg-dark-secondary rounded"
               >
                 Cancel
               </button>
@@ -265,19 +301,19 @@
       >
         <div class="flex justify-center gap-2 mb-6">
           <button
-            class="px-4 py-2 rounded bg-light-bg-lighter text-light-accent hover:bg-white timer-btn active"
+            class="btn-timer active"
             data-type="pomodoro"
           >
             Pomodoro
           </button>
           <button
-            class="px-4 py-2 rounded bg-light-bg-lighter hover:bg-white text-light-accent timer-btn"
+            class="btn-timer"
             data-type="short-break"
           >
             Short Break
           </button>
           <button
-            class="px-4 py-2 rounded bg-light-bg-lighter hover:bg-white text-light-accent timer-btn"
+            class="btn-timer"
             data-type="long-break"
           >
             Long Break
@@ -287,20 +323,20 @@
         <div class="text-center">
           <h1
             id="time"
-            class="text-[80px] leading-none font-bold text-light-accent mb-6"
+            class="text-[80px] leading-none font-bold text-light-and-dark mb-6"
           >
             25:00
           </h1>
           <div class="flex justify-center items-center gap-4">
             <button
               id="start-btn"
-              class="bg-light-bg-lighter text-light-accent px-16 py-3 rounded-lg text-xl font-bold hover:bg-white button-raised"
+              class="btn-timer px-16 py-3 rounded-lg text-xl font-bold button-raised"
             >
               START
             </button>
             <button
               id="skip-btn"
-              class="text-light-accent hover:text-white/80 transition-colors duration-200 hidden"
+              class="text-light-and-dark hover:text-white/80 transition-colors duration-200 hidden"
             >
               <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" />
@@ -312,9 +348,9 @@
 
       <!-- Current Task Display -->
       <div class="text-center mt-6 mb-2">
-        <div class="text-light-accent text-sm" id="task-number">#1</div>
+        <div class="text-light-and-dark text-sm" id="task-number">#1</div>
         <h2
-          class="text-xl text-light-accent font-medium"
+          class="text-xl text-light-and-dark font-medium"
           id="current-task-display"
         >
           Time to focus!
@@ -322,28 +358,28 @@
       </div>
 
       <!-- Task Section -->
-      <div class="mt-8">
+      <div class="mt-8 ">
         <!-- Tasks Header with Divider -->
         <div class="mb-4 px-2">
-          <h3 class="font-bold text-light-accent text-xl mb-2">Tasks</h3>
-          <div class="h-px bg-light-accent -mx-10"></div>
+          <h3 class="font-bold text-light-and-dark text-xl mb-2">Tasks</h3>
+          <div class="h-px bg-light-accent dark:bg-dark-accent -mx-10"></div>
         </div>
 
-        <div class="bg-light-secondary dark:bg-dark-bg rounded-lg p-6">
+        <div class="bg-light-secondary dark:bg-dark-secondary rounded-lg p-6">
           <!-- Task List -->
           <div id="task-list"></div>
 
           <!-- Add Task Button -->
           <button
             id="add-task"
-            class="w-full py-3 mt-4 border-2 bg-light-bg-lighter border-dashed border-light-accent/50 dark:border-gray-600 rounded-lg text-light-accent dark:text-gray-400 hover:bg-white dark:hover:bg-gray-700"
+            class="w-full py-3 mt-4 border-2 border-light-accent dark:border-dark-accent btn-timer rounded-lg text-light-and-dark "
           >
             + Add Task
           </button>
         </div>
 
         <div class="bg-light dark:bg-dark-bg mt-4 p-4 rounded-lg h-[48px] flex items-center">
-          <div class="flex justify-between text-m text-light-accent w-full">
+          <div class="flex justify-between text-m text-light-and-dark w-full">
             <span>Pomos: <span id="pomo-count">0/0</span></span>
             <span>Finish at: <span id="finish-time">--:--</span></span>
           </div>
@@ -356,10 +392,10 @@
         class="fixed inset-0 bg-black/50 hidden items-start justify-center pt-40"
       >
         <div
-          class="bg-white dark:bg-dark-bg rounded-lg w-full max-w-md mx-4 shadow-xl"
+          class="bg-light-bg dark:bg-dark-bg rounded-lg w-full max-w-md mx-4 shadow-xl"
         >
           <div class="p-6">
-            <h2 class="text-xl font-bold text-light-accent dark:text-dark-text mb-6">
+            <h2 class="text-xl font-bold text-light-accent dark:text-dark-accent mb-6">
               Settings
             </h2>
 
@@ -369,52 +405,52 @@
               <div class="grid grid-cols-4 gap-4 mb-4">
                 <div class="flex flex-col justify-end">
                   <label
-                    class="block text-light-accent dark:text-dark-text text-sm mb-2"
+                    class="block text-light-accent dark:text-dark-accent text-sm mb-2"
                     >Pomodoro</label
                   >
                   <input
                     type="number"
                     id="pomodoro-time"
-                    class="w-full px-3 py-2 border border-gray-200 dark:border-gray-600 rounded text-light-accent dark:text-dark-text bg-white dark:bg-dark-secondary"
+                    class="w-full px-3 py-2 border border-light-border dark:border-dark-border rounded text-light-accent dark:text-dark-accent bg-light-secondary dark:bg-dark-secondary"
                     value="25"
                     min="1"
                   />
                 </div>
                 <div class="flex flex-col justify-end">
                   <label
-                    class="block text-light-accent dark:text-dark-text text-sm mb-2"
+                    class="block text-light-accent dark:text-dark-accent text-sm mb-2"
                     >Short Break</label
                   >
                   <input
                     type="number"
                     id="short-break-time"
-                    class="w-full px-3 py-2 border border-gray-200 dark:border-gray-600 rounded text-light-accent dark:text-dark-text bg-white dark:bg-dark-secondary"
+                    class="w-full px-3 py-2 border border-light-border dark:border-dark-border rounded text-light-accent dark:text-dark-accent bg-light-secondary dark:bg-dark-secondary"
                     value="5"
                     min="1"
                   />
                 </div>
                 <div class="flex flex-col justify-end">
                   <label
-                    class="block text-light-accent dark:text-dark-text text-sm mb-2"
+                    class="block text-light-accent dark:text-dark-accent text-sm mb-2"
                     >Long Break</label
                   >
                   <input
                     type="number"
                     id="long-break-time"
-                    class="w-full px-3 py-2 border border-gray-200 dark:border-gray-600 rounded text-light-accent dark:text-dark-text bg-white dark:bg-dark-secondary"
+                    class="w-full px-3 py-2 border border-light-border dark:border-dark-border rounded text-light-accent dark:text-dark-accent bg-light-secondary dark:bg-dark-secondary"
                     value="15"
                     min="1"
                   />
                 </div>
                 <div class="flex flex-col justify-end">
                   <label
-                    class="block text-light-accent dark:text-dark-text text-sm mb-2"
+                    class="block text-light-accent dark:text-dark-accent text-sm mb-2"
                     >Long Interval</label
                   >
                   <input
                     type="number"
                     id="long-break-interval"
-                    class="w-full px-3 py-2 border border-gray-200 dark:border-gray-600 rounded text-light-accent dark:text-dark-text bg-white dark:bg-dark-secondary"
+                    class="w-full px-3 py-2 border border-light-border dark:border-dark-border rounded text-light-accent dark:text-dark-accent bg-light-secondary dark:bg-dark-secondary"
                     value="4"
                     min="1"
                   />
@@ -423,7 +459,7 @@
 
               <div class="space-y-4">
                 <div class="flex items-center justify-between">
-                  <span class="text-light-accent dark:text-dark-text"
+                  <span class="text-light-accent dark:text-dark-accent"
                     >Auto Switch Tasks</span
                   >
                   <label
@@ -435,7 +471,7 @@
                       class="sr-only peer"
                     />
                     <div
-                      class="w-11 h-6 bg-gray-200 dark:bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-light-accent dark:peer-checked:bg-dark-accent"
+                      class="w-11 h-6 bg-light-secondary dark:bg-dark-secondary peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-light-accent dark:peer-checked:bg-dark-accent"
                     ></div>
                   </label>
                 </div>
@@ -445,13 +481,13 @@
             <div class="flex justify-end gap-3">
               <button
                 id="cancel-settings-btn"
-                class="px-6 py-2 text-light-accent dark:text-dark-text hover:bg-light-secondary dark:hover:bg-dark-secondary rounded"
+                class="px-6 py-2 text-light-accent dark:text-dark-accent hover:bg-light-secondary dark:hover:bg-dark-secondary rounded"
               >
                 Cancel
               </button>
               <button
                 id="save-settings-btn"
-                class="px-6 py-2 bg-light-accent dark:bg-dark-accent text-white rounded hover:bg-light-accent-hover dark:hover:bg-dark-accent-hover"
+                class="px-6 py-2 bg-light-accent dark:bg-dark-accent text-light-bg dark:text-dark-bg rounded hover:bg-light-accent-hover dark:hover:bg-dark-accent-hover"
               >
                 Save
               </button>
@@ -494,7 +530,7 @@
 
       const timerDisplay = document.getElementById("time");
       const startButton = document.getElementById("start-btn");
-      const timerButtons = document.querySelectorAll(".timer-btn");
+      const timerButtons = document.querySelectorAll("button[data-type]");
       const pomoCounter = document.getElementById("pomo-count");
       const finishTime = document.getElementById("finish-time");
 
@@ -527,27 +563,19 @@
           timerId = null;
         }
 
+        // Update active button
+        timerButtons.forEach((btn) => {
+          btn.classList.remove("active", );
+          if (btn.dataset.type === mode) {
+            btn.classList.add("active");
+          }
+        });
+
         startButton.textContent = "START";
         startButton.classList.remove("button-pressed");
         startButton.classList.add("button-raised");
         document.getElementById("skip-btn").classList.add("hidden");
         updateTimerDisplay();
-
-        // Update active button
-        timerButtons.forEach((btn) => {
-          btn.classList.remove("active", "bg-white/20");
-          if (btn.dataset.type === mode) {
-            btn.classList.add("active", "bg-white/20");
-          }
-        });
-
-        // Update background color
-        document.body.classList.remove("break", "long-break");
-        if (mode === "short-break") {
-          document.body.classList.add("break");
-        } else if (mode === "long-break") {
-          document.body.classList.add("long-break");
-        }
       }
 
       function toggleTimer() {
@@ -681,7 +709,8 @@
       function createTaskElement(task) {
         const taskDiv = document.createElement("div");
         taskDiv.className =
-          "bg-gray-50 dark:bg-dark-secondary p-4 rounded-lg mb-3";
+          "bg-light-bg dark:bg-dark-bg p-4 rounded-lg mb-3 dark:border-dark-border cursor-pointer " + 
+          (tasks.indexOf(task) === currentTaskIndex ? "border-2 border-light-accent dark:border-dark-accent" : "");
         taskDiv.draggable = true;
         taskDiv.dataset.taskId = tasks.indexOf(task);
 
@@ -691,18 +720,19 @@
         regularView.innerHTML = `
                 <div class="flex items-center justify-between">
                     <div class="flex items-center gap-3">
-                        <input type="checkbox" class="w-5 h-5 rounded border-gray-300 dark:border-gray-600 text-blue-600 focus:ring-blue-500" ${
-                          task.completed ? "checked" : ""
-                        }>
-                        <span class="text-gray-900 dark:text-gray-200 ${
-                          task.completed ? "line-through" : ""
-                        }">${task.name}</span>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" ${task.completed ? "checked" : ""}>
+                            <svg class="checkmark w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 6L9 17L4 12" class="text-light-accent dark:text-dark-accent"/>
+                            </svg>
+                        </label>
+                        <span class="text-light-and-dark ${task.completed ? "line-through opacity-50" : ""}">${task.name}</span>
                     </div>
                     <div class="flex items-center gap-3">
-                        <span class="text-gray-500 dark:text-gray-400">${
+                        <span class="text-light-accent dark:text-dark-accent font-medium">${
                           task.completedPomos
                         }/${task.estimatedPomos}</span>
-                        <button class="text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 three-dots-btn">
+                        <button class="text-light-accent dark:text-dark-accent hover:text-light-accent-hover dark:hover:text-dark-accent-hover three-dots-btn">
                             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
                             </svg>
@@ -711,7 +741,7 @@
                 </div>
                 ${
                   task.note
-                    ? `<div class="mt-2 p-2 bg-yellow-50 dark:bg-yellow-900/20 text-gray-700 dark:text-gray-300 rounded-lg text-sm">${task.note}</div>`
+                    ? `<div class="mt-2 p-2 bg-white dark:bg-dark-bg-lighter text-light-and-dark rounded-lg text-sm">${task.note}</div>`
                     : ""
                 }
             `;
@@ -720,24 +750,24 @@
         const editView = document.createElement("div");
         editView.className = "hidden";
         editView.innerHTML = `
-                <div class="bg-white dark:bg-dark-bg p-6 rounded-lg shadow-lg">
+                <div class="bg-white dark:bg-dark-bg-lighter p-6 rounded-lg shadow-lg">
                     <div class="mb-4">
-                        <input type="text" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 dark:text-gray-200 bg-white dark:bg-dark-secondary" 
+                        <input type="text" class="w-full p-3 border border-light-border dark:border-dark-border rounded-lg focus:ring-2 focus:ring-light-accent dark:focus:ring-dark-accent text-light-and-dark bg-light-secondary dark:bg-dark-secondary" 
                                placeholder="What are you working on?">
                     </div>
                     <div class="mb-4">
-                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Act / Est Pomodoros</label>
+                        <label class="block text-sm font-medium text-light-and-dark mb-2">Act / Est Pomodoros</label>
                         <div class="flex items-center gap-3">
-                            <input type="number" class="completed-pomos w-20 p-3 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-gray-200 bg-white dark:bg-dark-secondary" min="0">
-                            <span class="text-gray-500 dark:text-gray-400">/</span>
-                            <input type="number" class="estimated-pomos w-20 p-3 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-gray-200 bg-white dark:bg-dark-secondary" min="1">
+                            <input type="number" class="completed-pomos w-20 p-3 border border-light-border dark:border-dark-border rounded-lg text-light-and-dark bg-light-secondary dark:bg-dark-secondary" min="0">
+                            <span class="text-light-accent dark:text-dark-accent font-medium">/</span>
+                            <input type="number" class="estimated-pomos w-20 p-3 border border-light-border dark:border-dark-border rounded-lg text-light-and-dark bg-light-secondary dark:bg-dark-secondary" min="1">
                             <div class="flex flex-col gap-1">
-                                <button class="increment-btn p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">
+                                <button class="increment-btn p-1 text-light-accent dark:text-dark-accent hover:bg-light-secondary dark:hover:bg-dark-secondary rounded">
                                     <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
                                         <path d="M7 14l5-5 5 5z"/>
                                     </svg>
                                 </button>
-                                <button class="decrement-btn p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">
+                                <button class="decrement-btn p-1 text-light-accent dark:text-dark-accent hover:bg-light-secondary dark:hover:bg-dark-secondary rounded">
                                     <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
                                         <path d="M7 10l5 5 5-5z"/>
                                     </svg>
@@ -746,14 +776,14 @@
                         </div>
                     </div>
                     <div class="mb-6">
-                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Note</label>
-                        <textarea class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-gray-200 bg-white dark:bg-dark-secondary" 
+                        <label class="block text-sm font-medium text-light-and-dark mb-2">Note</label>
+                        <textarea class="w-full p-3 border border-light-border dark:border-dark-border rounded-lg text-light-and-dark bg-light-secondary dark:bg-dark-secondary" 
                                   rows="3"></textarea>
                     </div>
                     <div class="flex justify-end gap-3">
-                        <button class="delete-btn px-4 py-2 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg">Delete</button>
-                        <button class="cancel-btn px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">Cancel</button>
-                        <button class="save-btn px-4 py-2 bg-gray-900 dark:bg-gray-700 text-white rounded-lg hover:bg-gray-800 dark:hover:bg-gray-600">Save</button>
+                        <button class="delete-btn px-4 py-2 text-light-accent dark:text-dark-accent hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg font-medium">Delete</button>
+                        <button class="cancel-btn px-4 py-2 text-light-and-dark hover:bg-light-secondary dark:hover:bg-dark-secondary rounded-lg">Cancel</button>
+                        <button class="save-btn px-4 py-2 bg-light-accent dark:bg-dark-accent text-white dark:text-white rounded-lg hover:bg-light-accent-hover dark:hover:bg-dark-accent-hover font-medium">Save</button>
                     </div>
                 </div>
             `;
@@ -813,6 +843,15 @@
         const deleteBtn = editView.querySelector(".delete-btn");
         const incrementBtn = editView.querySelector(".increment-btn");
         const decrementBtn = editView.querySelector(".decrement-btn");
+
+        // Add click handler for task selection
+        regularView.addEventListener("click", (e) => {
+            // Prevent triggering when clicking checkbox or three dots
+            if (!e.target.closest('.custom-checkbox') && !e.target.closest('.three-dots-btn')) {
+                currentTaskIndex = tasks.indexOf(task);
+                updateTaskDisplay();
+            }
+        });
 
         threeDotsBtn.addEventListener("click", () => {
           // Populate form fields with current task data
@@ -912,10 +951,12 @@
           return;
         }
 
-        // Find first incomplete task
-        currentTaskIndex = tasks.findIndex((task) => !task.completed);
+        // If no task is selected, find first incomplete task
         if (currentTaskIndex === -1) {
-          currentTaskIndex = tasks.length - 1;
+          currentTaskIndex = tasks.findIndex((task) => !task.completed);
+          if (currentTaskIndex === -1) {
+            currentTaskIndex = tasks.length - 1;
+          }
         }
 
         const currentTask = tasks[currentTaskIndex];
@@ -1215,37 +1256,6 @@
           );
         }
       }
-
-      function startTimer() {
-        if (timerId) return;
-
-        isRunning = true;
-        startButton.textContent = "PAUSE";
-        startButton.classList.remove("button-raised");
-        startButton.classList.add("button-pressed");
-        document.getElementById("skip-btn").classList.remove("hidden");
-
-        timerId = setInterval(() => {
-          timeLeft--;
-          updateTimerDisplay();
-
-          if (timeLeft === 0) {
-            clearInterval(timerId);
-            timerId = null;
-            handleTimerCompletion();
-          }
-        }, 1000);
-      }
-
-      // Add timer button click listeners
-      timerButtons.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          if (isRunning) {
-            pauseTimer();
-          }
-          switchMode(btn.dataset.type);
-        });
-      });
 
       // Theme toggle functionality
       const themeToggle = document.getElementById("themeToggle");
