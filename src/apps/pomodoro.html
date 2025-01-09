@@ -29,6 +29,23 @@
         box-shadow: rgba(0, 0, 0, 0.3) 0px 6px 0px;
       }
 
+      /* Mobile adjustments */
+      @media (max-width: 640px) {
+        header {
+          margin: 0 !important;
+          padding: 1rem !important;
+        }
+
+        .container {
+          padding: 0 0.5rem;
+        }
+
+        .font-bold.text-light-and-dark {
+          font-size: 1.25rem;
+        }
+      }
+
+      /* Dark mode text colors */
       .dark .text-gray-900 {
         color: var(--dark-text);
       }
@@ -155,10 +172,10 @@
         <div class="flex gap-2">
           <a
             href="../index.html"
-            class="btn-primary px-4 py-2 rounded transition-colors"
+            class="btn-primary p-2 rounded transition-colors"
           >
             <svg
-              class="w-6 h-6"
+              class="w-5 h-5"
               fill="none"
               stroke="currentColor"
               stroke-width="2"
@@ -171,10 +188,10 @@
             </svg>
           </a>
           <button
-            class="btn-primary px-4 py-2 rounded transition-colors"
+            class="btn-primary p-2 rounded transition-colors"
           >
             <svg
-              class="w-6 h-6"
+              class="w-5 h-5"
               fill="none"
               stroke="currentColor"
               stroke-width="2"
@@ -191,10 +208,10 @@
           <button
             id="themeToggle"
             aria-label="Toggle dark mode"
-            class="btn-primary px-4 py-2 rounded transition-colors"
+            class="btn-primary p-2 rounded transition-colors"
           >
             <svg
-              class="w-6 h-6"
+              class="w-5 h-5"
               fill="none"
               stroke="currentColor"
               stroke-width="2"
@@ -933,6 +950,8 @@
 
       function updateTaskDisplay() {
         taskList.innerHTML = "";
+        // Sort tasks so completed ones are at the bottom
+        tasks.sort((a, b) => a.completed - b.completed);
         tasks.forEach((task) => {
           taskList.appendChild(createTaskElement(task));
         });
