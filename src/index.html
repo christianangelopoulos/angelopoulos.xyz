@@ -427,22 +427,6 @@
                 updateThemeIcon(); // Ensure icon is updated
             }
             
-            // Menu toggle functionality
-            const menuToggle = document.getElementById('menuToggle');
-            const popupMenu = document.querySelector('.popup-menu');
-            
-            if (menuToggle && popupMenu) {
-                menuToggle.addEventListener('click', () => {
-                    popupMenu.classList.toggle('active');
-                });
-                
-                // Close menu when clicking outside
-                document.addEventListener('click', (event) => {
-                    if (!menuToggle.contains(event.target) && !popupMenu.contains(event.target)) {
-                        popupMenu.classList.remove('active');
-                    }
-                });
-            }
         }
     </script>
 </body>

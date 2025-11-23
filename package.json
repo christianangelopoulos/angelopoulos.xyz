@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "node build.js",
-    "dev": "nodemon --watch src --ext '*' --exec \"npx tailwindcss -i ./src/styles/main.css -o ./src/styles/output.css && http-server ./src\""
-
+    "dev": "http-server ./src"
   },
   "repository": {
     "type": "git",
@@ -20,10 +19,6 @@
   },
   "homepage": "https://github.com/christianangelopoulos/angelopoulos.xyz#readme",
   "devDependencies": {
-    "autoprefixer": "^10.4.20",
-    "fs-extra": "^11.2.0",
-    "nodemon": "^3.1.9",
-    "postcss": "^8.4.49",
-    "tailwindcss": "^3.4.17"
+    "fs-extra": "^11.2.0"
   }
 }
