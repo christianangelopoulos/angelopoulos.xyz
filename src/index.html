@@ -6,323 +6,237 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="The personal website of Christian Angelopoulos" />
     <link rel="icon" href="images/empyrean.jpg">
-    <title> Christian Angelopoulos</title>
+    <title>Christian Angelopoulos</title>
     <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-    <!-- Preloader -->
-    <div class="preloader">
-        <div class="preloader-spinner"></div>
-    </div>
-
-    <!-- Header -->
-    <header id="openingSection">
-        <div id="headerContainer">
-            <div id="titleContainer">
-                <h1 class="title">Christian Angelopoulos</h1>
-                <h2>
-                    contact me on
-                    <a href="https://www.linkedin.com/in/christian-a-1686711b9/">linkedin</a>,
-                    <a href="https://github.com/christianangelopoulos">github</a> or by
-                    <a href="mailto:christianangelopoulos@gmail.com">email</a>
-                </h2>
+    <div class="site-wrapper">
+        <!-- Header -->
+        <header class="site-header">
+            <div class="header-content">
+                <div class="avatar-wrapper">
+                    <img src="images/empyrean.jpg" alt="Christian Angelopoulos" class="avatar">
+                </div>
+                <div class="header-text">
+                    <h1>Christian Angelopoulos</h1>
+                    <p class="tagline">Product @ Uniswap · Ex-Medical Device Engineer</p>
+                </div>
+                <div class="contact-links">
+                    <a href="https://www.linkedin.com/in/christian-a-1686711b9/" class="header-btn">LinkedIn</a>
+                    <a href="https://github.com/christianangelopoulos" class="header-btn">GitHub</a>
+                    <a href="mailto:christianangelopoulos@gmail.com" class="header-btn">Email</a>
+                    <button id="themeToggle" class="header-btn" aria-label="Toggle dark mode" title="Toggle theme">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    </button>
+                </div>
             </div>
-            <img src="images/empyrean.jpg" alt="Profile Picture" id="profilePic">            
-            <div class="header-buttons">
-                <button id="themeToggle" aria-label="Toggle dark mode">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
-            </div>
-        </div>
-    </header>
+        </header>
 
-    <hr>
+        <main>
+            <!-- About Section -->
+            <section class="section" id="about">
+                <h2>About</h2>
+                <p class="about-text">
+                    I'm a Staff Product Manager focused on Protocols at
+                    <a href="https://uniswap.org">Uniswap Labs</a>.
+                    Previously, I specialized in systems and electromechanical engineering for biosensors and single-use medical devices. I'm a former Medical Device Innovation Fellow of the University of Minnesota.
+                </p>
+            </section>
 
-    <!-- Summary Section -->
-    <div id="summarySection">
-        <h2> Personal & Professional Summary</h2>
-        <p>
-            I'm a Staff Product Manager focused on Protocols at
-            <a href="https://uniswap.org">Uniswap&nbsp;Labs</a>.
-            I used to work in the medical-device industry, specializing in systems and electromechanical
-            engineering for biosensors and single-use devices. I am a former Medical Device Innovation Fellow at the University of Minnesota.
-          </p>
-    </div>
+            <!-- Experience Section -->
+            <section class="section" id="experience">
+                <h2>Experience</h2>
+                <div class="experience-list">
+                    <article class="experience-item">
+                        <img src="images/uni.jpeg" alt="Uniswap" class="experience-logo">
+                        <div class="experience-info">
+                            <p class="experience-role">Staff Product Manager, Protocols @ <a href="https://app.uniswap.org/">Uniswap Labs</a></p>
+                        </div>
+                        <span class="experience-date">2025 – Present</span>
+                    </article>
+                    <article class="experience-item">
+                        <img src="images/eco.png" alt="Eco" class="experience-logo">
+                        <div class="experience-info">
+                            <p class="experience-role">Lead Technical Product Manager @ <a href="https://eco.com/">Eco</a></p>
+                        </div>
+                        <span class="experience-date">2022 – 2025</span>
+                    </article>
+                    <article class="experience-item">
+                        <img src="images/hf.jpg" alt="HumanFirst" class="experience-logo">
+                        <div class="experience-info">
+                            <p class="experience-role">Research Lead @ <a href="https://www.gohumanfirst.com/">HumanFirst</a></p>
+                        </div>
+                        <span class="experience-date">2021 – 2022</span>
+                    </article>
+                    <article class="experience-item">
+                        <img src="images/umn.jpg" alt="UMN" class="experience-logo">
+                        <div class="experience-info">
+                            <p class="experience-role">Medical Device Innovation Fellow @ <a href="https://bmdc.umn.edu/">UMN</a></p>
+                        </div>
+                        <span class="experience-date">2020 – 2021</span>
+                    </article>
+                    <article class="experience-item">
+                        <img src="images/ew.jpg" alt="Edwards Lifesciences" class="experience-logo">
+                        <div class="experience-info">
+                            <p class="experience-role">Senior R&D Engineer @ <a href="https://www.edwards.com/">Edwards Lifesciences</a></p>
+                        </div>
+                        <span class="experience-date">2018 – 2020</span>
+                    </article>
+                    <article class="experience-item">
+                        <img src="images/s.jpg" alt="Sonendo" class="experience-logo">
+                        <div class="experience-info">
+                            <p class="experience-role">Biomedical Engineer @ <a href="https://sonendo.com/">Sonendo</a></p>
+                        </div>
+                        <span class="experience-date">2016 – 2018</span>
+                    </article>
+                </div>
+            </section>
 
-    <hr>
-
-    <!-- Experience Section -->
-    <div id="experienceSection">
-        <div class="experience">
-            <h2>Professional Experience</h2>
-            <div>
-                <ul style="list-style-type: none;">
+            <!-- Publications Section -->
+            <section class="section" id="publications">
+                <h2>Publications & Patents</h2>
+                <ul class="content-list">
                     <li>
-                        <img src="images/uni.jpeg" class="center">
-                        Staff Product Manager, Protocols @ <a href="https://app.uniswap.org/">Uniswap Labs</a> <span class="date"
-                            style="display:inline-block">(2025 - Present)</span>
+                        <span class="content-category">Patents</span>
+                        <ul>
+                            <li><a href="https://patents.google.com/patent/US20230173235A1">US20230173235A1</a>: Method & Apparatus for Treatment of Chronic Venous Insufficiency</li>
+                            <li><a href="https://patents.google.com/patent/US20230181305A1">US20230181305A1</a>: Gallbladder Implant</li>
+                            <li><a href="https://patents.google.com/patent/WO2024137807A2">WO2024137807A2</a>: In Vitro Fertilization (IVF) Embryo Transfer Catheter</li>
+                        </ul>
                     </li>
                     <li>
-                        <img src="images/eco.png" class="center">
-                        Lead Technical Product Manager @ <a href="https://eco.com/">Eco</a> <span class="date"
-                            style="display:inline-block">(2022 - 2025)</span>
-                    </li>
-                    <li>
-                        <img src="images/hf.jpg" class="center">
-                        Research Lead @ <a href="https://www.gohumanfirst.com/">HumanFirst</a> <span class="date"
-                            style="display:inline-block">(2021-2022)</span>
-                    </li>
-                    <li>
-                        <img src="images/umn.jpg" class="center">
-                        Medical Device Innovation Fellow @ <a href="https://bmdc.umn.edu/">UMN</a> <span class="date"
-                            style="display:inline-block">(2020-2021)</span>
-                    </li>
-                    <li>
-                        <img src="images/ew.jpg" class="center">
-                        Senior R&D Engineer @ <a href="https://www.edwards.com/">Edwards Lifesciences</a> <span
-                            class="date" style="display:inline-block">(2018-2020)</span>
-                    </li>
-                    <li>
-                        <img src="images/s.jpg" class="center">
-                        Biomedical Engineer @ <a href="https://sonendo.com/">Sonendo</a> <span class="date"
-                            style="display:inline-block">(2016-2018)</span>
+                        <span class="content-category">Publications</span>
+                        <ul>
+                            <li><a href="https://www.jmir.org/2021/11/e34493/">Journal of Medical Internet Research (2021)</a>: Sensor Data Integration: A New Cross-Industry Collaboration to Articulate Value, Define Needs, and Advance a Framework for Best Practices</li>
+                            <li><a href="https://www.nature.com/articles/s41467-019-10219-8">Nature Communications (2019)</a>: Cholinergic neural activity directs retinal layer-specific angiogenesis and blood retinal barrier formation</li>
+                        </ul>
                     </li>
                 </ul>
-            </div>
-        </div>
+            </section>
 
-        <!-- Consulting Section -->
-        <div class="consulting">
-            <h2>Consulting & Advising</h2>
-            <div>
-                <ul style="list-style-type: none;">
+            <!-- Writing Section -->
+            <section class="section" id="writing">
+                <h2>Writing & Presentations</h2>
+                <ul class="content-list">
                     <li>
-                        <img src="images/empyreal_square.jpg" class="center">
-                        Consultant @ <a href="https://www.linkedin.com/company/empyreal-systems-llc">Empyreal
-                            Systems</a> <span class="date" style="display:inline-block">(2021 - Present)</span>
+                        <span class="content-category">Conference Presentations</span>
+                        <ul>
+                            <li><a href="https://www.youtube.com/watch?v=s4IolFkEISA">Polymer Demo Day (ETH Denver, 2025)</a>: Demonstrated how Polymer's cross-rollup proof system cut Eco's latency and scaling costs versus Ethereum storage proofs, and introduced a broadcasting scheme that lowered cross-chain communication overhead from (N – 1)² to N proofs.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="content-category">Technical Writing</span>
+                        <ul>
+                            <li><a href="https://blog.uniswap.org/the-compact-v1">The Compact v1 (Uniswap Blog, 2025)</a>: A technical blog post introducing Uniswap's Compact v1, detailing design decisions, protocol architecture, and the impact on on-chain liquidity and efficiency.</li>
+                            <li><a href="https://eco.com/blog/eco-routes-settlement-modularity-for-the-best-cross-chain-ux/">Settlement Modularity for the Best Cross-Chain UX (Eco Blog, 2025)</a>: An exploration of why Eco Routes provides different proof systems for cross-chain settlement to optimize speed, cost, and security.</li>
+                            <li><a href="https://eco.com/blog/a-comprehensive-technical-overview-of-eco-routes/">A Comprehensive Technical Overview of Eco Routes (Eco Blog, 2025)</a>: An architecture breakdown of the cross-chain stablecoin-payment protocol I designed.</li>
+                            <li><a href="https://echo.mirror.xyz/P0-9CXMHBXstSGY2pu0haK8wKvR9o62iRSxMwVitFc8">Beam Deep Dive on Account Abstraction (Mirror, 2023)</a>: A technical dive on how Beam leverages ERC-4337 to make stablecoin payments as intuitive as Venmo while preserving self-custody and censorship resistance.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="content-category">Other</span>
+                        <ul>
+                            <li><a href="https://github.com/ethereum/RIPs/blob/master/RIPS/rip-7859.md">RIP-7859 (Ethereum, 2025)</a>: Contributed feedback on exposing L1-origin data within L2 execution, earning co-authorship of this proposal.</li>
+                        </ul>
                     </li>
                 </ul>
-            </div>
-        </div>
+            </section>
 
+            <!-- Services Section -->
+            <section class="section" id="services">
+                <h2>Services</h2>
+                <div class="services-grid">
+                    <article class="experience-item experience-item--wide">
+                        <img src="images/empyreal_square.jpg" alt="Empyreal Systems" class="experience-logo">
+                        <div class="experience-info">
+                            <p class="experience-role">Consultant @ <a href="https://www.linkedin.com/company/empyreal-systems-llc">Empyreal Systems</a></p>
+                        </div>
+                        <span class="experience-date">2021 – Present</span>
+                    </article>
+                    <div class="service-card">
+                        <h3>Cryptocurrency</h3>
+                        <ul>
+                            <li>Early stage ideation, roadmap development, and proof of concept</li>
+                            <li>Protocol architecture, requirements, and technical specifications</li>
+                            <li>Partner intros, business strategy, tokenomics, and project management</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <h3>Medical Devices</h3>
+                        <ul>
+                            <li>Early stage ideation, market research, and proof of concept</li>
+                            <li>Requirements, verification & validation, and test system design</li>
+                            <li>Root cause analysis, failure analysis, and experimental design</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
 
-        <hr>
-
-        <!-- Technical Consulting Section -->
-        <div class="consulting">
-            <h2>Technical Consulting</h2>
-            <div>
-                <ul>
-                    I like to help <u>cryptocurrency</u> companies with:
-                    <ul>
-                        <li>
-                            early stage ideation, roadmap development, and proof of concept
-                        </li>
-                        <li>
-                            protocol architecture, requirements, and technical specifications
-                        </li>
-                        <li>
-                            partner intros, business strategy, tokenomics, and project management
-                        </li>
-                    </ul>
-                </ul>
-                <ul>
-                    I like to help <u>medical device</u> companies with:
-                    <ul>
-                        <li>
-                            early stage ideation, market research, and proof of concept
-                        </li>
-                        <li>
-                            requirements, verification & validation, and test system design
-                        </li>
-                        <li>
-                            root cause analysis, failure analysis, and experimental design
-                        </li>
-                    </ul>
-                </ul>
-            </div>
-        </div>
-
-        <hr>
-
-        <!-- Publications Section -->
-        <div class="publications">
-            <h2>Publications & Patents</h2>
-            <div>
-                <ul>
-                    <li>
-                        Patents:
-                    <ul>
-                        <li><a href="https://patents.google.com/patent/US20230173235A1">US20230173235A1</a>: Method &
-                            Apparatus for Treatment of Chronic Venous Insufficiency</li>
-                        <li><a href="https://patents.google.com/patent/US20230181305A1">US20230181305A1</a>: Gallbladder
-                            Implant</li>
-                        <li><a href="https://patents.google.com/patent/WO2024137807A2">WO2024137807A2</a>: In Vitro
-                            Fertilization (IVF) Embryo Transfer Catheter
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    Publications
-                    <ul>
-                        <li><a href="https://www.jmir.org/2021/11/e34493/">Journal of Medical Internet Research
-                                (2021)</a>:
-                            Sensor Data Integration: A New Cross-Industry Collaboration to Articulate Value,
-                            Define Needs, and Advance a Framework for Best Practices
-                        </li>
-                        <li><a href="https://www.nature.com/articles/s41467-019-10219-8">Nature Communications (2019)</a>:
-                            Cholinergic neural activity directs retinal layer-specific angiogenesis and blood retinal
-                            barrier formation
-                        </li>
-                    </ul>
-                </li>
-                </ul>
-            </div>
-        </div>
-
-        <hr>
-
-        <!-- Technical Presentations / Writing Samples Section -->
-        <div class="technical-presentations">
-            <h2>Technical Presentations & Writing & Other</h2>
-            <div>
-              <ul>
-                <li>
-                  Conference Presentations
-                  <ul>
-                    <li>
-                      <a href="https://www.youtube.com/watch?v=s4IolFkEISA">Polymer Demo Day (ETH Denver, 2025)</a>:
-                      Demonstrated how Polymer’s cross-rollup proof system cut Eco’s latency and scaling costs versus
-                      Ethereum storage proofs, and introduced a broadcasting scheme that lowered cross-chain communication
-                      overhead from <em>(N – 1)<sup>2</sup></em> to <em>N</em> proofs.
-                    </li>
-                  </ul>
-                </li>
-            
-                <li>
-                    Technical Writing
-                    <ul>
-                       <li>
-                        <a href="https://blog.uniswap.org/the-compact-v1">
-                          The Compact v1 (Uniswap Blog, 2025)</a>:
-                        A technical blog post introducing Uniswap's Compact v1, detailing design decisions, protocol architecture, and the impact on on-chain liquidity and efficiency.
-                      </li>
-                      <li>
-                        <a href="https://eco.com/blog/eco-routes-settlement-modularity-for-the-best-cross-chain-ux/">
-                        Settlement Modularity for the Best Cross-Chain UX (Eco Blog, 2025)</a>:
-                        An exploration of why Eco Routes provides different proof systems for cross-chain settlement
-                        to optimize speed, cost, and security for cross-chain settlement.
-                      </li>
-                  
-                      <li>
-                        <a href="https://eco.com/blog/a-comprehensive-technical-overview-of-eco-routes/">
-                          A Comprehensive Technical Overview of Eco Routes (Eco Blog, 2025)</a>:
-                        An architecture breakdown of the cross-chain stablecoin-payment protocol I designed.
-                      </li>
-                  
-                      <li>
-                        <a href="https://echo.mirror.xyz/P0-9CXMHBXstSGY2pu0haK8wKvR9o62iRSxMwVitFc8">
-                          Beam Deep Dive on Account Abstraction (Mirror, 2023)</a>:
-                        A technical dive I authored on how Beam leverages ERC-4337 to make stablecoin payments
-                        as intuitive as Venmo while preserving self-custody and censorship resistance.
-                      </li>
-                    </ul>
-                  </li>
-                  <li>
-                    Other Stuff :)
-                    <ul>
-                        <li>
-                            <a href="https://github.com/ethereum/RIPs/blob/master/RIPS/rip-7859.md">RIP-7859 (Ethereum, 2025)</a>:
-                            Contributed feedback on exposing L1-origin data within L2 execution, earning co-authorship of this proposal.
-                          </li>
-                    </ul>
-                </li>
-                </li>
-              </ul>
-            </div>
-
-        <hr>
-    </div>
-
-    <div id="footer">
-        <p class="footer"><i>This website was modified from
-                <a href="https://github.com/gakonst/gakonst.github.io" />gakonst' fork</a> of the
-                <a href="https://github.com/transmissions11/transmissions11.github.io" />transmissions11</a>
-                website.</i></p>
-        <br />
     </div>
 
     <script>
-        // Safe localStorage access
+        // ============================================
+        // Safe localStorage helpers
+        // ============================================
         function getLocalStorage(key, defaultValue) {
             try {
                 const value = localStorage.getItem(key);
                 return value !== null ? value : defaultValue;
             } catch (e) {
-                console.warn('localStorage error:', e);
                 return defaultValue;
             }
         }
-        
+
         function setLocalStorage(key, value) {
             try {
                 localStorage.setItem(key, value);
-                return true;
-            } catch (e) {
-                console.warn('localStorage error:', e);
-                return false;
-            }
+            } catch (e) {}
         }
-        
-        // Theme management
-        const prefersDarkScheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
-        
-        // Apply theme immediately to prevent flash
+
+        // ============================================
+        // Theme Management
+        // ============================================
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
         function applyTheme() {
-            const savedTheme = getLocalStorage('theme', null);
-            const systemDarkMode = prefersDarkScheme && prefersDarkScheme.matches;
-            
-            // Remove existing theme classes
+            const saved = getLocalStorage('theme', null);
+            const systemDark = prefersDark && prefersDark.matches;
+
             document.documentElement.classList.remove('force-dark', 'force-light');
-            
-            // Apply appropriate theme
-            if (savedTheme === 'dark' || (savedTheme === null && systemDarkMode)) {
+
+            if (saved === 'dark' || (saved === null && systemDark)) {
                 document.documentElement.classList.add('force-dark');
-            } else if (savedTheme === 'light') {
+            } else if (saved === 'light') {
                 document.documentElement.classList.add('force-light');
             }
-            
-            // Update icon if possible
+
             updateThemeIcon();
         }
-        
-        // Initialize theme icon
+
         function updateThemeIcon() {
-            const themeToggle = document.getElementById('themeToggle');
-            if (!themeToggle) return;
-            
-            const svg = themeToggle.querySelector('svg');
+            const btn = document.getElementById('themeToggle');
+            if (!btn) return;
+
+            const svg = btn.querySelector('svg');
             if (!svg) return;
-            
+
             const isDark = document.documentElement.classList.contains('force-dark') ||
-                (!document.documentElement.classList.contains('force-light') && prefersDarkScheme && prefersDarkScheme.matches);
-            
-            const moonPath = "M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z";
-            
+                (!document.documentElement.classList.contains('force-light') && prefersDark && prefersDark.matches);
+
             if (isDark) {
-                svg.innerHTML = `<path d="${moonPath}" fill="currentColor" stroke="currentColor"/>`;
+                svg.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="none" stroke="currentColor" stroke-width="2"/>';
             } else {
                 svg.innerHTML = `
                     <circle cx="12" cy="12" r="5"></circle>
@@ -337,97 +251,54 @@
                 `;
             }
         }
-        
-        // Toggle theme function
+
         function toggleTheme() {
-            const hasForceLight = document.documentElement.classList.contains('force-light');
-            const hasDefaultDark = prefersDarkScheme && prefersDarkScheme.matches && 
-                                  !document.documentElement.classList.contains('force-light') && 
-                                  !document.documentElement.classList.contains('force-dark');
-            
-            // Remove both classes
+            const isDark = document.documentElement.classList.contains('force-dark') ||
+                (!document.documentElement.classList.contains('force-light') && prefersDark && prefersDark.matches);
+
             document.documentElement.classList.remove('force-dark', 'force-light');
-            
-            // Toggle between light and dark
-            if (hasForceLight || hasDefaultDark) {
-                document.documentElement.classList.add('force-dark');
-                setLocalStorage('theme', 'dark');
-            } else {
+
+            if (isDark) {
                 document.documentElement.classList.add('force-light');
                 setLocalStorage('theme', 'light');
+            } else {
+                document.documentElement.classList.add('force-dark');
+                setLocalStorage('theme', 'dark');
             }
-            
-            // Update the icon
+
             updateThemeIcon();
         }
-        
-        // Apply theme immediately
+
+        // ============================================
+        // Initialize
+        // ============================================
         applyTheme();
-        
-        // Set up visibility change detection for theme refresh
-        if (document.visibilityState !== undefined) {
-            document.addEventListener('visibilitychange', function() {
-                if (document.visibilityState === 'visible') {
-                    applyTheme();
-                }
-            });
-        }
-        
-        // Set up media query listener for system theme changes
-        if (prefersDarkScheme) {
+        // Enable lore mode by default
+        document.documentElement.classList.add('lore-mode');
+
+        if (prefersDark) {
             try {
-                prefersDarkScheme.addEventListener('change', applyTheme);
+                prefersDark.addEventListener('change', applyTheme);
             } catch (e) {
-                // Fallback for older browsers
-                try {
-                    prefersDarkScheme.addListener(applyTheme);
-                } catch (e2) {
-                    console.warn('Could not add media query listener', e2);
-                }
+                prefersDark.addListener(applyTheme);
             }
         }
-        
-        // Initialize fully when DOM is loaded
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', setupDOM);
-        } else {
-            // DOM already loaded
-            setupDOM();
-        }
-        
-        // Preloader
-        window.addEventListener('load', () => {
-            const preloader = document.querySelector('.preloader');
-            if (preloader) {
-                preloader.classList.add('fade-out');
-                setTimeout(() => {
-                    preloader.style.display = 'none';
-                }, 500);
-            }
-        });
-        
-        // Setup DOM interactions
-        function setupDOM() {
+
+        document.addEventListener('DOMContentLoaded', () => {
             // Image loading
-            const images = document.querySelectorAll('img');
-            images.forEach(img => {
+            document.querySelectorAll('img').forEach(img => {
                 if (img.complete) {
                     img.classList.add('loaded');
                 } else {
-                    img.addEventListener('load', () => {
-                        img.classList.add('loaded');
-                    });
+                    img.addEventListener('load', () => img.classList.add('loaded'));
                 }
             });
-            
-            // Dark mode toggle
-            const themeToggle = document.getElementById('themeToggle');
-            if (themeToggle) {
-                themeToggle.addEventListener('click', toggleTheme);
-                updateThemeIcon(); // Ensure icon is updated
-            }
-            
-        }
+
+            // Theme toggle
+            const themeBtn = document.getElementById('themeToggle');
+            if (themeBtn) themeBtn.addEventListener('click', toggleTheme);
+        });
+
     </script>
 </body>
 
