@@ -7,6 +7,21 @@
     <meta name="description" content="The personal website of Christian Angelopoulos" />
     <link rel="icon" href="images/empyrean.jpg">
     <title>Christian Angelopoulos</title>
+    <script>
+        // Blocking script to prevent theme flash - runs before CSS paints
+        (function() {
+            try {
+                var saved = localStorage.getItem('theme');
+                var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                if (saved === 'dark' || (saved === null && prefersDark)) {
+                    document.documentElement.classList.add('force-dark');
+                } else if (saved === 'light') {
+                    document.documentElement.classList.add('force-light');
+                }
+                document.documentElement.classList.add('lore-mode');
+            } catch(e) {}
+        })();
+    </script>
     <link rel="stylesheet" href="style.css" />
 </head>
 
@@ -270,11 +285,9 @@
         }
 
         // ============================================
-        // Initialize
+        // Initialize (theme already set by blocking script in head)
         // ============================================
-        applyTheme();
-        // Enable lore mode by default
-        document.documentElement.classList.add('lore-mode');
+        updateThemeIcon();
 
         if (prefersDark) {
             try {
